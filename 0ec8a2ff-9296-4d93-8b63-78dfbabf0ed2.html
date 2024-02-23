@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Dark Nights with Poe and Munro</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('0ec8a2ff-9296-4d93-8b63-78dfbabf0ed2/69486694-1c9e-4e86-8714-aee26503431c.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="0ec8a2ff-9296-4d93-8b63-78dfbabf0ed2/443e4873-f625-440c-8e96-887b2bcd0e63.ico"/> Dark Nights with Poe and Munro</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>详情</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="0ec8a2ff-9296-4d93-8b63-78dfbabf0ed2/73da4219-c78b-4acf-bb43-b17c2b9db7e9.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>游玩时间</TD>
+								<TD>38m 0s</TD>
+							</TR>
+							<TR>
+								<TD>上次活动</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_lastactivity_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2023/6/25">2023/6/25</a> 15:36:44</TD>
+							</TR>
+							<TR>
+								<TD>已添加</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 8:55:05</TD>
+							</TR>
+							<TR>
+								<TD>已修改</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 9:00:45</TD>
+							</TR>
+							<TR>
+								<TD>完成状态</TD>
+								<TD><a href="#quicklink-游玩过">游玩过</a></TD>
+							</TR>
+							<TR>
+								<TD>库</TD>
+								<TD><a href="#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>来源</TD>
+								<TD><a href="default_source_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>平台</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发布日期</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_releasedate_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2020/5/19">2020/5/19</a> </TD>
+							</TR>
+							<TR>
+								<TD>社区评分</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>媒体评分</TD>
+								<TD><a href="#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>用户评分</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>流派</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>开发者</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-D'Avekki Studios">D'Avekki Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发行机构</TD>
+								<TD><a href="#quicklink-D'Avekki Studios">D'Avekki Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>功能特色</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>链接</TD>
+								<TD><a href="https://store.steampowered.com/app/1098170" target="_blank">Steam</a><br/><a href="https://poeandmunro.com/" target="_blank">Official</a><br/><a href="https://www.gog.com/game/dark_nights_with_poe_and_munro" target="_blank">GOG</a><br/><a href="http://itunes.apple.com/us/app/id1558832830#?platform=iphone" target="_blank">iPhone</a><br/><a href="http://itunes.apple.com/us/app/id1558832830#?platform=ipad" target="_blank">iPad</a><br/><a href="https://www.twitch.tv/directory/game/Dark%20Nights%20with%20Poe%20and%20Munro" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>描述</H3>
+				</div>
+				<div class="description">
+					「你正在收听八月电台，与坡和芒罗共度暗夜…」<br><br>以真人影像为题材的交互式剧情解谜游戏，玩家将与电台主持人坡和芒罗在八月这个奇异小镇展开一场惊险无比的悬疑冒险之旅！引导主角在故事中做出正确的选择，助力破解六个匪夷所思的超自然谜案，其中包括一个紧追不舍的恶梦跟踪者、一个心愿未了的复仇幽灵，以及一幅能实现愿望的恶魔画作。您能不能让这双秘密恋人一起冲破难关，圆满结局收场？<br><br>* 六个同时发布的完全互动章节<br>* 近5小时的全屏高清视频<br>* 直观的点击式定时热点界面<br>* 每个章节都有不同的结局和数百个分支剧情<br><br>由《德科医生的传染疯病》和《化身侦探》两部得奖名作的同一班底操刀，《与坡和芒罗共度暗夜》故事背景设在《化身侦探》之前，游戏玩法不同，全新故事情节！<br><br>游戏亮点<br><br>+ 单击消失的热点，选择之后发生的事情<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1098170/extras/throw.png?t=1670267836" /><br>+ 探索八月镇<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1098170/extras/map.png?t=1670267836" /><br>+ 与当地人交谈<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1098170/extras/violet.png?t=1670267836" /><br>+ 帮助坡和芒罗摆脱棘手的情况<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1098170/extras/tied.png?t=1670267836" /><br>+ 保住他们的性命…<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1098170/extras/holdup.png?t=1670267836" /><br>+ 一起走到最后…<br><img src="https://cdn.akamai.steamstatic.com/steam/apps/1098170/extras/bed.png?t=1670267836" /><br><br>继《化身侦探》后，克莱门斯·科林 (Klemens Koehring) 和莉亚·库纳德 (Leah Cunard) 今次再度合作，分别饰演故事中两位主角坡和芒罗，另外还邀请到曾出演《德科医生的传染疯病》的艾斯林·德阿斯 (Aislinn De’Ath) 特别客串。<br><br>其它配音客串包括来自《The Adventure Zone》和《My Brother, My Brother and Me》的喜剧演员贾斯汀·麦克埃罗伊 (Justin McElroy)、《魔物学园：毕业舞会大作战》和《化身侦探》的杰西·考克斯 (Jesse Cox)、《波西亚时光》的约瑟夫·比查姆 (Joseph Beacham)，以及PC电子冒险游戏《幽魂》（1995年）的大卫·霍姆 (David Homb)。<br><br><strong>演员表</strong><br>坡 ... 克莱门斯·科林 (Klemens Koehring)<br>芒罗 ... 莉亚·库纳德 (Leah Cunard)<br>维奥莱特 ... 艾斯林·德阿斯 (Aislinn De'Ath)<br>昆汀 ... 安德烈·莱科因特 (Andre Lecointe)<br>亨丽埃塔 ... 阿葡丽尔·穆恩 (April Moon)<br>克莱小姐 ... 阿什莉·科尔 (Ashleigh Cole)<br>米利森特 ... 艾维安娜·斯诺 (Ayvianna Snow)<br>韦斯玛丽 ... 艾菲·威利斯 (Effy Willis)<br>达拉斯 ... 英格丽·埃文斯 (Ingrid Evans)<br>巴拉茨基夫人 ... 拉腊·勒蒙 (Lara Lemon)<br>托姆斯 ... 彼得·雷弗尔-沃尔什 (Peter Revel-Walsh)<br>露丝 ... 雷切尔·考尔斯 (Rachel Cowles)<br>琼斯 ... 里克·罗梅罗 (Rick Romero)<br>卡斯帕 ... 文森特·古尔德 (Vincent Gould)<br>乔 ... 沃里克·西蒙 (Warrick Simon)<br><br><strong>客串配音</strong><br>弗兰基 ... 贾斯汀·麦克埃罗伊 (Justin McElroy)<br>贝克 ... 约瑟夫·比查姆 (Joseph Beacham)<br>伊西 ... 乔·莫尔 (Joe Maw) <br>贾兹 ... 杰西卡·金霍恩 (Jessica Kinghorn)<br>来电听众2 ... 巴里·奥尔德里奇 (Barry Aldridge)<br>阿尔文 ... 杰西·考克斯 (Jesse Cox)<br>埃里克 ... 大卫·霍姆 (David Homb)<br>埃迪 ... 鲍比·塞克斯基拉 (Bobby Sixkilla)<br>奎尼 ... 亚历克斯·弗内斯 (Alex Furness) <br>海伦娜 ... 金米·莫尔丁 (Kimmy Mauldin )<br>阿Q ... 埃莉·迪亚兹 (Eli Diaz)
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>
