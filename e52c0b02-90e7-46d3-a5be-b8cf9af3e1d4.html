@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Plants vs Zombies: Game of the Year</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('e52c0b02-90e7-46d3-a5be-b8cf9af3e1d4/f44e319c-2f27-4261-8f5c-3c0bd986a0fd.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="e52c0b02-90e7-46d3-a5be-b8cf9af3e1d4/95c6d5e7-7adb-4699-9e45-18229df1f6bd.ico"/> Plants vs Zombies: Game of the Year</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>详情</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="e52c0b02-90e7-46d3-a5be-b8cf9af3e1d4/5f0f62aa-bb68-43cf-8b44-3b61c504a19e.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>游玩时间</TD>
+								<TD>10h 35m 0s</TD>
+							</TR>
+							<TR>
+								<TD>上次活动</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_lastactivity_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2022/12/24">2022/12/24</a> 19:48:56</TD>
+							</TR>
+							<TR>
+								<TD>已添加</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 8:55:05</TD>
+							</TR>
+							<TR>
+								<TD>已修改</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 9:00:16</TD>
+							</TR>
+							<TR>
+								<TD>完成状态</TD>
+								<TD><a href="#quicklink-游玩过">游玩过</a></TD>
+							</TR>
+							<TR>
+								<TD>库</TD>
+								<TD><a href="#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>来源</TD>
+								<TD><a href="default_source_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>平台</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发布日期</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_releasedate_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2010/8/9">2010/8/9</a> </TD>
+							</TR>
+							<TR>
+								<TD>社区评分</TD>
+								<TD><a href="#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>媒体评分</TD>
+								<TD><a href="#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>用户评分</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>流派</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Puzzle">Puzzle</a><br/><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Real Time Strategy (RTS)">Real Time Strategy (RTS)</a><br/><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Simulator">Simulator</a><br/><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Strategy">Strategy</a><br/><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Tactical">Tactical</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>开发者</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-PopCap Games">PopCap Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发行机构</TD>
+								<TD><a href="#quicklink-PopCap Games">PopCap Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>功能特色</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>链接</TD>
+								<TD><a href="https://store.steampowered.com/app/3590" target="_blank">Steam</a><br/><a href="https://www.ea.com/games/plants-vs-zombies/plants-vs-zombies" target="_blank">Official</a><br/><a href="https://en.wikipedia.org/wiki/Plants_vs._Zombies" target="_blank">Wikipedia</a><br/><a href="https://plantsvszombies.fandom.com/wiki/Plants_vs._Zombies:_Game_of_the_Year_Edition" target="_blank">Wikia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_tag_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-[Engine] PopCap Games Framework">[Engine] PopCap Games Framework</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>描述</H3>
+				</div>
+				<div class="description">
+					来自曾开发过宝石迷阵和幻幻球的宝开公司的全新动作策略游戏！<br>     可怕的僵尸即将入侵你的家，唯一的防御方式就是你栽种的植物！武装你的植物，切换他们不同的功能，诸如强悍的豌豆射手或樱桃炸弹，更加快速有效的将僵尸阻挡在入侵的道路上。不同的敌人，不同的玩法构成五种不同的游戏模式，加之夕阳、浓雾以及泳池之类的障碍增加了其挑战性，奇特的游戏乐趣永无止境！<br>     <ul class="bb_ul"><li>独特的五种游戏模式：冒险，迷你，益智，生存，再加上毫无压力的禅境花园<br>     </li><li>多达 50 个的冒险模式关卡设定，从白天到夜晚再到浓雾，从房顶到游泳池，场景变化多样<br>     </li><li>游戏共有 26 种不同的僵尸敌人，包括撑杆僵尸，潜水僵尸和开着车子的雪橇车僵尸等，使游戏更具挑战性<br>     </li><li>49 种功能强大，互不相同的植物，并可收集硬币购买宠物蜗牛，升级道具等多种道具！<br>     </li><li>打开图鉴，可以看到植物与僵尸的详细介绍，再加上有趣的“事实”和引用<br>     </li><li>通过“疯狂戴夫店”购买特殊植物和工具，以你能想象得到的方式干掉僵尸<br>     </li><li>精致的游戏画面与声音，同时还更新有奖励型的音乐与视频<br>     </li><li>无限次重玩：不会经历两次同样的事件！<br>     </li><li>解锁全部的 Steam 成就<br>     </li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

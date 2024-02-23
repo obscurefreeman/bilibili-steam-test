@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Monster Prom</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('721e0731-3465-41b6-ac42-1efcad51e928/15d4da48-ac8d-4468-b6b6-ac42ed5a90a5.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="721e0731-3465-41b6-ac42-1efcad51e928/719ae63a-738a-4a07-b13d-b03d8c1906dd.ico"/> Monster Prom</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>详情</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="721e0731-3465-41b6-ac42-1efcad51e928/74d7bffe-903f-4c24-b203-92f04f592d9f.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>游玩时间</TD>
+								<TD>32m 0s</TD>
+							</TR>
+							<TR>
+								<TD>上次活动</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_lastactivity_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2023/5/6">2023/5/6</a> 17:09:20</TD>
+							</TR>
+							<TR>
+								<TD>已添加</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 8:55:05</TD>
+							</TR>
+							<TR>
+								<TD>已修改</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 9:02:16</TD>
+							</TR>
+							<TR>
+								<TD>完成状态</TD>
+								<TD><a href="#quicklink-游玩过">游玩过</a></TD>
+							</TR>
+							<TR>
+								<TD>库</TD>
+								<TD><a href="#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>来源</TD>
+								<TD><a href="default_source_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>平台</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发布日期</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_releasedate_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2018/4/27">2018/4/27</a> </TD>
+							</TR>
+							<TR>
+								<TD>社区评分</TD>
+								<TD><a href="#quicklink-69">69</a></TD>
+							</TR>
+							<TR>
+								<TD>媒体评分</TD>
+								<TD><a href="#quicklink-59">59</a></TD>
+							</TR>
+							<TR>
+								<TD>用户评分</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>流派</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Adventure">Adventure</a><br/><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Simulator">Simulator</a><br/><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Visual Novel">Visual Novel</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>开发者</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Beautiful Glitch">Beautiful Glitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发行机构</TD>
+								<TD><a href="#quicklink-Those Awesome Guys">Those Awesome Guys</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>功能特色</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>链接</TD>
+								<TD><a href="https://store.steampowered.com/app/743450" target="_blank">Steam</a><br/><a href="http://monsterprom.pizza/" target="_blank">Official</a><br/><a href="https://www.facebook.com/MonsterPromGame" target="_blank">Facebook</a><br/><a href="https://twitter.com/monsterprom" target="_blank">Twitter</a><br/><a href="https://www.reddit.com/r/MonsterProm" target="_blank">Reddit</a><br/><a href="https://www.gog.com/game/monster_prom" target="_blank">GOG</a><br/><a href="https://www.twitch.tv/directory/game/Monster%20Prom" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_tag_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-[Engine] Unity">[Engine] Unity</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>描述</H3>
+				</div>
+				<div class="description">
+					<img src="https://cdn.akamai.steamstatic.com/steam/apps/743450/extras/Chinese_-_BeYourWorstSelf_-_Banner.png?t=1667825918" /><br><br><strong>内容声明</strong><br><br>《魔物学园》里包含成人主题、性爱词汇，以及一些客观上的低俗情景，不适合害羞小子和承受能力不强的人群。请在游玩时铭记于心。<br><br>--<br><br>距离毕业舞会只有三周了，可你连舞伴都还没找到……而你是个魔物。不过别担心，因为在你的高中里面每个人都是魔物！这就是《魔物学园》，支持1-4人同时游玩的竞技约会模拟器，一款让你思考“我从来没想过我居然会喜欢这样子！”的游戏。<br><br>选择你自己的旅程，披荆斩棘赢得同班同学的青睐，填写问卷以决定自己的数据，参与各种有趣而诡异的情景以撩拨他/她的心弦，发掘自身从未发现过的一面。<br><br>扬长避短，寻得并解锁物品以增加约会成功的几率，一切都是为了每个高中生梦寐以求的目标：找到毕业舞会的舞伴。<br><br>邀请至多三位好友或独立游玩，在精美的作画、诙谐的对话中，准备进行艰难的抉择——因为在这弱肉强食的魔物学园世界里，只存在两种人：情人和单身狗。做魔物很难，可找到毕业舞伴更难！<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/743450/extras/Chinese_-_AListOfAwesomeThings_-_banner.png?t=1667825918" /><br><br><strong>情场如战场</strong><br>没有什么比来一点点竞争更令人心旷神怡了。你会专注于其中一位可攻略对象释放爱意，但是，假如你和你的朋友的浪漫品味比较一致，那竞争将不可避免。<br><br><strong>贼有毒的文案</strong><br>在爱情和战争中，一切都是公平的，但是，请不要把自己搞得太严肃了。在 Cory O’Brien，Maggie Herskowitz 和 Julián Quijano撰写的文案中，充斥着古灵精怪的后现代幽默。在魔物学园中，连它自己，都可以变成笑料的来源。<br><br><strong>精致的美术</strong><br>Arthur Tien绘制的人物和精美世界让这个游戏的探索过程充满趣味。<br><br><strong>上千条滑稽可笑的剧情分支和数百个事件</strong><br>化身为这所魔物学园中的一分子看，体验数百个游戏事件和上千种可能的分支，游戏有着极为丰富的可能性。<br><br><strong>一到四名玩家本地合作</strong><br>独乐乐亦可，呼朋唤友一起玩亦可。<br><br><strong>随时加入，即刻畅玩</strong><br>无须学习如何玩，随时可以加入这场恋爱大冒险。<br><br><strong>多样化的可攻略对象</strong><br>已经有六位可爱的同学来到了你身边，快去认识他们，了解如何敲开他们的心房吧。<br><br><strong>展现魔物风情的后现代生活切片</strong><br>这是一个美丽而且仍在发展变化的世界，你会与各种各样人物邂逅，而每一位角色都有着自己的个人时尚品味，穿着习惯，做事风格和怪癖。故事背景设定在一个拥有自拍，约会软件，变态晒弟图，狂欢派对，表情包和许许多多其他你熟悉的事物的现代魔物社会。<br><br><strong>自由选择的世界</strong><br>魔物的性向并非男孩或女孩，他们会喜欢另外一只魔物，性别不是问题。在魔物学园的世界中，性别或者性取向并不是影响爱情的因素，毕竟，你能找到对象就已经很不容易了，嘻嘻。
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

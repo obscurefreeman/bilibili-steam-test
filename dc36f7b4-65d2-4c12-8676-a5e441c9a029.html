@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Soundpad</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('dc36f7b4-65d2-4c12-8676-a5e441c9a029/f65b7767-7013-4e40-8169-8f55b47c93e5.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="dc36f7b4-65d2-4c12-8676-a5e441c9a029/16a931a7-3ddf-419e-bd24-d140c5b8114d.ico"/> Soundpad</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>详情</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="dc36f7b4-65d2-4c12-8676-a5e441c9a029/4ccd0018-7344-422c-95f6-fb7726dc2e2f.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>游玩时间</TD>
+								<TD>1d 17h 56m 0s</TD>
+							</TR>
+							<TR>
+								<TD>上次活动</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_lastactivity_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2023/2/6">2023/2/6</a> 12:51:14</TD>
+							</TR>
+							<TR>
+								<TD>已添加</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 8:55:05</TD>
+							</TR>
+							<TR>
+								<TD>已修改</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 9:02:04</TD>
+							</TR>
+							<TR>
+								<TD>完成状态</TD>
+								<TD><a href="#quicklink-游玩过">游玩过</a></TD>
+							</TR>
+							<TR>
+								<TD>库</TD>
+								<TD><a href="#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>来源</TD>
+								<TD><a href="default_source_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>平台</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发布日期</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_releasedate_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>社区评分</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>媒体评分</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>用户评分</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>流派</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>开发者</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>发行机构</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>功能特色</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>链接</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>描述</H3>
+				</div>
+				<div class="description">
+					以高数字质量在语音聊天中播放声音。立即免费试用演示！<br><br>您可能听说过 Soundpad，人们可以在其中将流行的 Duke Nukem 等声音放到一起。利用 Soundpad，您不仅可以对自己播放这些声音，也可以向其他人播放。<h2 class="bb_tag">特性</h2><ul class="bb_ul"><li> <strong>在语音聊天中播放声音</strong><br>适用于 Teamspeak、Mumble、Skype、Discord 等任何与语音有关的应用程序或者 Dota2、CS:GO 或 PUBG 等游戏。</li></ul><br><ul class="bb_ul"><li> <strong>热键</strong><br>为每个声音文件设置热键，以便在游戏中快速播放它们。</li></ul><br><ul class="bb_ul"><li> <strong>录音机和编辑器</strong><br>Soundpad 具有内置录音机，可让您录制听到的声音。集成编辑器可帮助您快速剪切声音。 </li></ul><br><ul class="bb_ul"><li> <strong>音量归一化</strong><br>在您的声音文件中，有一些很安静，而其他的太大声了？集成的音量归一化功能可平衡音量，以便符合您的语音音量要求。</li></ul><br><ul class="bb_ul"><li> <strong>轻松设置</strong><br>Soundpad 扩展了您的默认录音设备（最常见的设备是您的麦克风），无需安装其他设备。<br>在系统重新启动后，您便可以享受在自己的麦克风上播放声音的乐趣。</li></ul><br><ul class="bb_ul"><li> <strong>支持的文件类型</strong><br>aac、flac、m4a、mp3、ogg、wav、wma</li></ul><h2 class="bb_tag">重要提示：</h2><ul class="bb_ul"><li> Soundpad 会安装音频驱动程序扩展，这需要在您第一次运行 Soundpad 时重新启动系统。<br></li><li> 此外，Soundpad 还需要禁用 Windows Audio DRM 验证才能正常工作。 如果您想要观看受 DRM 保护的 DVD 并同时运行 Soundpad，其中一个功能将无法工作。 当您想要观看或倾听受 DRM 保护的媒体时，您可以在选项中切换 DRM 验证。</li></ul><br><i>观看演示并开始收集您的各种声音吧！</i>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

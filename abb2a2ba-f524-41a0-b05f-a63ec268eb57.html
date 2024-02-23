@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Jabroni Brawl: Episode 3</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('abb2a2ba-f524-41a0-b05f-a63ec268eb57/afd20ea6-c51a-4b12-a332-a7a5243163b5.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="abb2a2ba-f524-41a0-b05f-a63ec268eb57/a8bceef8-e2c5-417c-b41d-9e377f9a4d18.ico"/> Jabroni Brawl: Episode 3</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>详情</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="abb2a2ba-f524-41a0-b05f-a63ec268eb57/59dfd261-990b-49d6-a670-1d146c5a76c6.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>游玩时间</TD>
+								<TD>20h 47m 0s</TD>
+							</TR>
+							<TR>
+								<TD>上次活动</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_lastactivity_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2023/2/6">2023/2/6</a> 15:50:46</TD>
+							</TR>
+							<TR>
+								<TD>已添加</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 8:55:05</TD>
+							</TR>
+							<TR>
+								<TD>已修改</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 9:00:09</TD>
+							</TR>
+							<TR>
+								<TD>完成状态</TD>
+								<TD><a href="#quicklink-游玩过">游玩过</a></TD>
+							</TR>
+							<TR>
+								<TD>库</TD>
+								<TD><a href="#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>来源</TD>
+								<TD><a href="default_source_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>平台</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发布日期</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_releasedate_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2022/11/11">2022/11/11</a> </TD>
+							</TR>
+							<TR>
+								<TD>社区评分</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>媒体评分</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>用户评分</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>流派</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Indie">Indie</a><br/><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>开发者</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Team Jabroni">Team Jabroni</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发行机构</TD>
+								<TD><a href="#quicklink-Team Jabroni">Team Jabroni</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>功能特色</TD>
+								<TD><a href="#quicklink-Battle Royale">Battle Royale</a><br/><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>链接</TD>
+								<TD><a href="https://twitter.com/jabronibrawl" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/channel/UCZQwZN1CsEHvYUnZcLH9ivA" target="_blank">YouTube</a><br/><a href="https://discord.gg/DF4r4TR" target="_blank">Discord</a><br/><a href="https://jabronibrawl.com/" target="_blank">Official</a><br/><a href="https://store.steampowered.com/app/869480" target="_blank">Steam</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_tag_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-[Engine] Source">[Engine] Source</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>描述</H3>
+				</div>
+				<div class="description">
+					<img src="https://cdn.akamai.steamstatic.com/steam/apps/869480/extras/JB_IdiotsLogo_SChinese.png?t=1682863088" /><h2 class="bb_tag">这到底是个什么玩意儿？</h2>《傻缺大乱斗：第三章》是一款满载了各式各样的游戏模式、地图和武器，由数不胜数的模组制作者使用 Source 引擎的魔力构建而成的游戏。始于2012年的 JB3 结合了《火箭撬棍》、《猎杀科学家》、《Jaykin Bacon》等诸多《半条命 1》和《半条命 2》模组的灵感和理念，并在此基础上大幅扩展了《半条命》模组文化的伟大之处。除此之外，这款游戏力图向 Valve 那庞大的游戏家族致敬，玩家玩到的林林总总的地图，或是直接取自 Valve 的各种游戏，或是受到它们的启迪。我们的开发团队当然也有在游戏中投入自己的原创想法，最终结果便是形成一种看起来傻缺，但又充满乐子的线上死斗体验。<h2 class="bb_tag">里边有什么好康的？？</h2>我们的游戏模式选择非常广泛，并从许多 HL1 模组中汲取了灵感：<br><br><ul class="bb_ul"><li>大逃杀 - 基于《半条命 1》模组《Jaykin’ Bacon》扩展而来，每个回合开始的时候，所有玩家都会分配到一把随机武器。存活至回合结束的玩家将成为赢家。此外，临近回合结束时，地图还会出现山丘之王模式风格的随机安全区，将玩家集中在一起，从而避免回合发生平局的情况。突变规则会在随机的回合内乱入，扮演着疯狂改变游戏规则的角色，从而让持久的游戏保持新鲜感（比如：在突变规则回合里，你只能使用一把指定的枪，或者在另一个突变规则回合里，你只能倒着走）。<br></li><li>潜伏者大战恐怖分子 - 一支全副武装的恐怖分子团队将与另一小撮以潜入为主的团队（潜伏者）展开争斗。潜伏者会尝试接近目标，而恐怖分子则必须保护好目标。在各种小把戏的帮助下，潜伏者可以不被察觉便抵达目标，或悄无声息地干掉敌方团队成员。<br></li><li>潜伏者大战 M 队 - 少量的潜伏者将与成群体型被缩小的近战玩家展开争斗。这群近战玩家虽然只能赤手空拳，但他们速度极快，且能一遍又一遍地重生，在无尽的追求中杀光潜伏者。至少有一名潜行者必须在敌潮中挺过 90 秒才能获胜！M 队的出场方式同样会在每一回合变得随机化，即出现英文里各种以“M”命名的组合，把事情搞得更加有趣（如潜伏者大战床垫 [Mattresses]、潜伏者大战百货战警 [Mallcops] 等等）。<br></li><li>一击必杀 - 你将携带着五花八门的一击必杀武器出生在地图中，不过尽管视觉效果千差万别，但是这些枪的射速全部都是一样的。游戏的变数只会是你选择其中一样武器后，敌对的玩家将遭到怎样的羞辱而已（比如爆炸、上天、凝固等）。拿上最爱的枪，杀死最多的人，得到最高的分，取得回合的胜利吧！<br></li><li>枪械游戏 - 用上全部的 JB3 枪械杀出一片天，每用一把武器杀死一名敌人，便能向前迈进一步。第一名使用全部枪械杀敌的玩家将取得胜利！</li></ul>还不止这些呢！<br><br>游戏目前有着 80 多种武器，你总能从中找到一些称心的家伙。来抢先看看可以用到哪些值得期待的武器吧：<br><br><ul class="bb_ul"><li>左轮手枪 - 一把强大的枪械，在初次的冲击下总会剑走偏锋地反弹一次形成跳弹。<br></li><li>AX74 - 枪管装有斧头的一把 AKS74。敌人离得远就射死他们，敌人离得近就砍死他们！<br></li><li>纸箱 - 蹲下或卧倒，并且不要按下任何移动键，敌人就无法看到你。伺机等待对手靠近，向他发动偷袭吧！<br></li><li>火箭撬棍 - 一把撬棍！底下还装着火箭！朝玩家挥动就能把他们送上天，或者按下鼠标右键朝人们发射醉酒火箭。<br></li><li>回响贝斯枪 - 早在2012年初，它便被加进了游戏里，可谓是最早的武器之一，这把巨型武器可以播放回响贝斯音乐，从本质上就是可造成范围性伤害的火焰喷射器。慢慢的，听得久了，那些听音乐的人脑袋就会炸了。</li></ul>还有更多说不完的内容呢！<br><br>我们现在有超过 130 张地图，150 多个玩家模型，这些内容都是在日积月累中，由我们给力的社区制作而成，或是由其他的模组开发团队慷慨地给予我们，用在 JB 这款模组之中。总而言之，我们最不怕的就是内容短缺。<h2 class="bb_tag">再多跟我讲讲游戏的内容吧！</h2>我们在设计游戏时，脑海里一直保留着这样一个特定的概念：玩家自由。从服务器创建页面上的各种可定制选项（包括让你指定想要使用的枪支种类，以免你对一些傻缺的武器不感兴趣）到面向服务器所有者的数百个用于立即在比赛内修改几乎全部游戏要素的控制台变量，应有尽有。觉得你服务器里的比赛套路越来越老套了？试试把一把枪的射速设成无敌快吧！有一些指令甚至可以让你把枪械的既有功能改得连妈都不认识。游戏里的每一把武器都大有可改，游戏模式本身也是如此，所以尽情享受实验的乐趣吧！<br><br>我们还添加了一个有趣的系统，可以更改你使用的玩家模型的颜色。从结果上看，这个系统目前表现出色，多亏了全新的上色特效，基本上任何玩家模型都可以看起来完全不同。此外，从你的双手的颜色，到你使用的各种武器的颜色，这个颜色设置会影响模组中的角角落落！<br><br>想在 JB3 多种多样的游戏模式中试试一张老地图？好消息来了，我们也做了相应的调整，你可以直接通过控制台在游戏内添加新的地图实体，从而创建全部所需的出生点和大逃杀模式的山丘之王区域，最终让地图能够在 JB3 中顺利运行！这些指令可以通过游戏文件夹中创建的可编辑文本内进行调整。<h2 class="bb_tag">行了，我知道了，别念叨了</h2>完成这款游戏是一段漫长（而且特别艰难）的旅程，希望它值得各位的等待。这款游戏创作出来，就是为了让人们体验那种傻疯了的乐趣，我们希望你能够享受它带来的快乐！
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

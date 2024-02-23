@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Counter-Strike: Global Offensive</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('80f74542-1aca-4285-8e49-78214f6e67c0/c1df023d-56ff-4fb7-b88f-6b5e29b86925.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="80f74542-1aca-4285-8e49-78214f6e67c0/27e97d6b-14be-4d01-96e5-a9dc8c59a22a.ico"/> Counter-Strike: Global Offensive</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>详情</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="80f74542-1aca-4285-8e49-78214f6e67c0/652e83a9-bfa5-49b9-a594-49ff8c520e3b.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>游玩时间</TD>
+								<TD>19d 16h 4m 0s</TD>
+							</TR>
+							<TR>
+								<TD>上次活动</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_lastactivity_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2023/11/9">2023/11/9</a> 20:32:06</TD>
+							</TR>
+							<TR>
+								<TD>已添加</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 8:55:05</TD>
+							</TR>
+							<TR>
+								<TD>已修改</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 9:01:31</TD>
+							</TR>
+							<TR>
+								<TD>完成状态</TD>
+								<TD><a href="#quicklink-游玩过">游玩过</a></TD>
+							</TR>
+							<TR>
+								<TD>库</TD>
+								<TD><a href="#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>来源</TD>
+								<TD><a href="default_source_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>平台</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发布日期</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_releasedate_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2012/8/21">2012/8/21</a> </TD>
+							</TR>
+							<TR>
+								<TD>社区评分</TD>
+								<TD><a href="#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>媒体评分</TD>
+								<TD><a href="#quicklink-81">81</a></TD>
+							</TR>
+							<TR>
+								<TD>用户评分</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>流派</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Shooter">Shooter</a><br/><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Tactical">Tactical</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>开发者</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Hidden Path Entertainment">Hidden Path Entertainment</a><br/><a href="default%20combobox%20quicklinks_developer_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Valve">Valve</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发行机构</TD>
+								<TD><a href="#quicklink-Valve">Valve</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>功能特色</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>链接</TD>
+								<TD><a href="http://blog.counter-strike.net/" target="_blank">Official</a><br/><a href="http://counterstrike.wikia.com/wiki/Counter-Strike:_Global_Offensive" target="_blank">Wikia</a><br/><a href="https://en.wikipedia.org/wiki/Counter-Strike:_Global_Offensive" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/CounterStrike" target="_blank">Facebook</a><br/><a href="https://www.youtube.com/user/Valve" target="_blank">YouTube</a><br/><a href="https://store.steampowered.com/app/730" target="_blank">Steam</a><br/><a href="https://www.reddit.com/r/GlobalOffensive" target="_blank">Reddit</a><br/><a href="https://www.instagram.com/csgo_dev" target="_blank">Instagram</a><br/><a href="https://twitter.com/csgo" target="_blank">Twitter</a><br/><a href="https://www.twitch.tv/directory/game/Counter-Strike:%20Global%20Offensive" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_tag_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-[Engine] Source">[Engine] Source</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>描述</H3>
+				</div>
+				<div class="description">
+					《反恐精英：全球攻势》（CS: GO）延续了 1999 年原作在团队竞技类游戏上取得的傲人成就。<br />
+<br />
+CS: GO 的特色包含全新的地图、人物、武器、全新的游戏模式，并提供翻新后的 CS 经典内容（de_dust2 等）。<br />
+<br />
+“《反恐精英》这个模组于 1999 年 8月推出时，立刻成了世界上玩家数量最多的线上 PC 动作游戏，使得游戏业为之一惊。”Valve 的 Doug Lombardi 如是说道。“在过去的 12 年中，它一直是世界上拥有玩家数量最多的游戏之一，引领着竞技游戏赛事，并且在全球创下了超过 2500 万套的游戏销量。CS: GO 承诺将增强屡获殊荣的 CS 系列之游戏体验，并把它带给 PC 平台、次世代主机平台和 Mac 平台的玩家。”
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

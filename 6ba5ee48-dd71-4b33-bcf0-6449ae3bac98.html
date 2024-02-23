@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>S T A L K E R: Call of Pripyat</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+}
+
+.title img {
+	vertical-align: middle;                           /* images in title aligned vertical middle */
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.details img {
+	max-width: 100%;                                   /* make sure images don't overflow in width on details */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.52), rgba(0,0,0,0.73)), url('6ba5ee48-dd71-4b33-bcf0-6449ae3bac98/45fbd0f2-e802-401b-83d2-b6ebfcfbfc4d.jpg');">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button><img Height="48" class="lozad" data-src="6ba5ee48-dd71-4b33-bcf0-6449ae3bac98/072666b2-23d8-4758-9f42-b2db6e8928e4.ico"/> S T A L K E R: Call of Pripyat</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>详情</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />
+							<TR>
+								<TD style="text-align:center" Colspan="2"><img Height="175" class="lozad" data-src="6ba5ee48-dd71-4b33-bcf0-6449ae3bac98/dd4b06fa-b932-4cb8-aff3-1b04991b95b9.jpg"/></TD>
+							</TR>
+							<TR>
+								<TD>游玩时间</TD>
+								<TD>7h 59m 0s</TD>
+							</TR>
+							<TR>
+								<TD>上次活动</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_lastactivity_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2024/2/14">2024/2/14</a> 16:11:57</TD>
+							</TR>
+							<TR>
+								<TD>已添加</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 8:55:05</TD>
+							</TR>
+							<TR>
+								<TD>已修改</TD>
+								<TD><a href="#quicklink-2023/6/16">2023/6/16</a> 9:01:39</TD>
+							</TR>
+							<TR>
+								<TD>完成状态</TD>
+								<TD><a href="#quicklink-游玩过">游玩过</a></TD>
+							</TR>
+							<TR>
+								<TD>库</TD>
+								<TD><a href="#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>来源</TD>
+								<TD><a href="default_source_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>平台</TD>
+								<TD><a href="#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发布日期</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_releasedate_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-2009/10/2">2009/10/2</a> </TD>
+							</TR>
+							<TR>
+								<TD>社区评分</TD>
+								<TD><a href="#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>媒体评分</TD>
+								<TD><a href="#quicklink-79">79</a></TD>
+							</TR>
+							<TR>
+								<TD>用户评分</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>流派</TD>
+								<TD><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>开发者</TD>
+								<TD><a href="default%20combobox%20quicklinks_developer_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-GSC Game World">GSC Game World</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>发行机构</TD>
+								<TD><a href="#quicklink-bitComposer Games">bitComposer Games</a><br/><a href="#quicklink-Deep Silver">Deep Silver</a><br/><a href="#quicklink-GSC World Publishing">GSC World Publishing</a><br/><a href="#quicklink-Viva Media">Viva Media</a><br/><a href="#quicklink-Zoo Corporation">Zoo Corporation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>功能特色</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>链接</TD>
+								<TD><a href="http://cop.stalker-game.com/" target="_blank">Official</a><br/><a href="https://store.steampowered.com/app/41700" target="_blank">Steam</a><br/><a href="http://stalker.wikia.com/wiki/S.T.A.L.K.E.R.:_Call_of_Pripyat" target="_blank">Wikia</a><br/><a href="https://en.wikipedia.org/wiki/S.T.A.L.K.E.R.:_Call_of_Pripyat" target="_blank">Wikipedia</a><br/><a href="https://www.gog.com/game/stalker_call_of_pripyat" target="_blank">GOG</a><br/><a href="https://www.twitch.tv/directory/game/S.T.A.L.K.E.R.:%20Call%20of%20Pripyat" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="default%20list%20combobox%20quicklinks_tag_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html#quicklink-[Engine] X-Ray Engine">[Engine] X-Ray Engine</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>描述</H3>
+				</div>
+				<div class="description">
+					一支前往封锁区中心的军事探险队神秘消失。在《潜行者：普里皮亚季的召唤》中，你将扮演乌克兰国家安全局的特工捷格加廖夫少校，奉命查清失踪的起因和人员的状况<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/41700/extras/ship.gif?t=1685134248" /><h2 class="bb_tag">未知地域</h2><br>切尔诺贝利核电站周边的封锁区内异常现象频发，强度远超以往。毁灭性能量大肆喷涌，席卷此地，使其终日不得安宁，只有那些最有经验和胆量的老手才能够前往封锁区的核心地带。规划路线，穿过沼泽密布的扎通、木星工厂工业区和普里皮亚季鬼城，探寻灾难发生后潜行者从未涉足过的绝密地下墓穴。<br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/41700/extras/shadowlight.gif?t=1685134248" /><h2 class="bb_tag">全新威胁</h2><br>封锁区内的情况更加难以预料，处处危机四伏，涌动的能量正在扭曲现实的结构。你必须在能量喷涌时找到庇护，并在应对全新异常现象时展现出过人才智。准备直面这片土地上最凶猛的夜行掠食者奇美拉，以及潜藏于黑暗的废弃之地、能够心灵感应的变种生物布尔。 <br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/41700/extras/movement.gif?t=1685134248" /><h2 class="bb_tag">故事续集</h2><br>尽管孤胆潜行者的生活方式很简单，但在《普里皮亚季的召唤》中，你有一个特殊的目标。在旅途中，你会遇到很多流浪汉和居民。请深谋远虑、谨慎决策：有些人能为你的调查提供帮助，或者为你揭开封锁区的一些谜团。 <br><br><img src="https://cdn.akamai.steamstatic.com/steam/apps/41700/extras/fight_st.gif?t=1685134248" /><br><br><strong>游戏特色：</strong><br><br><ul class="bb_ul"><li>源于黑暗的东欧科幻小说，集动作、恐怖、生存和角色扮演元素为一体。<br></li><li>在这片危险地域中，时间永远停滞，为你营造独一无二的孤寂氛围。<br></li><li>根据你在游戏过程中做出的各种决定，可能会触发多种结局。<br></li><li>改进了盔甲和武器的升级系统。<br></li><li>基于前作的最佳方案，重新设计了A-life生命仿真系统。<br></li><li>扩展支线任务系统，添加了许多全新的独特角色。<br></li><li>随机的能量喷涌机制，在任何时候都可能让你大吃一惊<br></li><li>全新变种生物：奇美拉和布尔。<br></li><li>基于现实原型重塑的普里皮亚季场景。<br></li><li>四种多人模式，最多支持32名玩家同图对战。</li></ul>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+		<script>
+			const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+			observer.observe();
+		</script>
+	</body>	
+</html>

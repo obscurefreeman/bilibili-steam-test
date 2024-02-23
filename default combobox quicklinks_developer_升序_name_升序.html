@@ -1,0 +1,1270 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>开发者</title>
+    <link rel="manifest" href="manifest.webmanifest">
+	<meta name="viewport" content="width=device-width, initial-scale=0.5">
+	<style>
+h2:after,
+.cards .card figcaption,
+.cards .card:after {
+  position: absolute;
+}
+
+h2,
+h2 strong,
+.cards .card
+{
+  position: relative;
+}
+
+.cards {
+  display: flex;
+}
+
+h2,
+h2 strong,
+h2 span {
+  vertical-align: middle;
+}
+
+body {
+  background: #24282f;
+  font-family: 'Arial';
+}
+
+.wrapper {
+  padding: 15px;
+}
+
+h2 {
+  padding: 10px;
+  padding-left: 25px;
+  color: #ccc;
+  margin: 0;
+}
+
+h2 strong {
+  z-index: 2;
+  background: #24282f;
+  padding: 4px 8px;
+}
+
+h2 span {
+  font-size: 0.7em;
+  color: #aaa;
+  margin-left: 10px;
+}
+
+h2:after {
+  content: '';
+  z-index: 1;
+  bottom: 50%;
+  margin-bottom: -2px;
+  height: 2px;
+  left: 0;
+  right: 0;
+  background: #373d47;
+}
+
+.cards {
+  flex-flow: row wrap;
+}
+
+.cards .card {
+  margin: 20px;
+  width: 180px;
+  height: 270px;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.8);
+  transform-origin: center top;
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  transition: 0.3s;
+}
+
+.cards .card img {
+  width: 100%;
+  min-height: 100%;
+}
+
+.cards .card figcaption {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px;
+  font-size: 16px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #DDD;
+  transition: 0.3s;
+}
+
+#h2jscript {
+  cursor:pointer;
+}
+
+.cards .card:hover,
+.cards .card:focus,
+.cards .card:active {
+  box-shadow: 0 8px 16px 3px rgba(0,0,0,0.6);
+  transform: translateY(-3px) scale(1.05) rotateX(15deg);
+}
+
+.cards .card:hover figcaption,
+.cards .card:focus figcaption,
+.cards .card:active figcaption {
+  transform: none;
+}
+
+.cards .card:hover:after,
+.cards .card:focus:after,
+.cards .card:active:after {
+  transform: rotate(25deg);
+  top: -40%;
+  opacity: 0.15;
+}
+
+.quicklinks {
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.quicklink {
+  margin: 10px;
+}
+
+/* unvisited link */
+a:link {
+  color: #ccc;
+}
+/* visited link */
+a:visited {
+  color: #ccc;
+}
+/* mouse over link */
+a:hover {
+  color: #EEE;
+}
+/* selected link */
+a:active {
+  color: #ccc;
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+.Menu {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#BackTopButton {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: red; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 20px; /* Increase font size */
+}
+
+.MenuButton {
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #555;/* Set a background color */
+  color: #ccc; /* Text color */
+  padding: 5px; /* Some padding */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 20px;/* Increase font size */
+  margin-top: 10px;
+  margin-left: 15px;
+  cursor:pointer;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #666; /* Add a dark-grey background on hover */
+  color: #eee; /* Text color */
+}
+
+#BackTopButton:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
+select#combobselect {
+    background-color:#555;
+    color:#CCC;
+}
+
+#label {
+   font-size: 20px;
+   color: #CCC;
+}
+
+input{
+  display: block;
+  background: #fff;
+  padding: .6rem;
+  border-radius: 0.3rem;
+  width: 300px;
+  border: 0.1rem solid #BDBDBD;
+  outline: none;
+  height: 1rem;
+}
+
+input:hover{
+	border: 0.1rem solid #0F52BA !important;
+}
+
+#searchbutton{
+  display: block;
+  background: #fff;
+  padding: .6rem;
+  border-radius: 0.3rem;
+  width: 175px;
+  border: 0.1rem solid #BDBDBD;
+  outline: none;
+  height: 2rem;
+}
+
+#searchbutton:hover{
+	border: 0.1rem solid #0F52BA !important;
+}
+	</style>
+   <script>
+	function search() {
+		var input, filter, games, game, cards, card, i, j, txtValue, wrapper, quicklinks, quicklink, quicklinkid, needhide, numvisible, quicklinklinks, quicklinkvalue;
+		input = document.getElementById("search");
+		filter = input.value.toUpperCase();
+
+		wrapper = document.getElementById("wrapper");
+		parentElement = wrapper.parentElement;
+		fragment = document.createDocumentFragment();
+		fragment.appendChild(wrapper.cloneNode(true));
+		wrapper.remove();
+		games = fragment.childNodes[0].getElementsByTagName("figcaption");
+		i = games.length - 1;
+		while (i >= 0) {
+			game = games[i];
+			txtValue = game.innerText;
+			if (txtValue.toUpperCase().indexOf(filter) > -1) {
+				game.parentElement.parentElement.style.display = "";
+			} else {
+				game.parentElement.parentElement.style.display = "none";
+			}
+			i--;
+		}
+		
+		quicklinks = fragment.childNodes[0].querySelectorAll("div[id^='quicklink-']")
+		i = quicklinks.length - 1;
+		while (i >= 0) {
+			quicklink = quicklinks[i];
+			quicklinkid = quicklink.id;
+			quicklinkvalue = quicklinkid.replace("quicklink-", "");
+			cards = fragment.getElementById(quicklinkid.replace("quicklink-", ""));
+			needhide = true;
+			if(cards)
+			{
+			
+				j = cards.children.length -1
+				numvisible = 0;
+				while (j >= 0)
+				{
+					if (cards.children[j].style.display == "")
+					{
+						needhide = false;
+						numvisible++;
+					}
+					j--;
+				}
+				
+				quicklinklinks = fragment.childNodes[0].querySelectorAll("option[value=\"#" + quicklinkid.replace(/["\\]/g, '\\$&') + "\"]")
+				if (needhide)
+				{
+					quicklink.style.display = "none";
+					cards.style.display = "none";
+					if (quicklinklinks.length == 1)
+					{
+						quicklink.children[0].children[0].innerHTML = "&#x25BA;";
+						quicklink.children[0].children[0].style.color = "#790000";
+						quicklinklinks[0].innerText = quicklinkvalue + " (" + numvisible.toString() + ")";
+						quicklink.children[0].children[1].children[0].innerText = "(" + numvisible.toString() + ")"
+						quicklinklinks[0].style.display = "none";
+					}
+				} else {
+					quicklink.style.display = "";					
+					cards.style.display = "";
+					if (quicklinklinks.length == 1)
+					{
+						quicklink.children[0].children[0].innerHTML = "&#x25BC;";
+						quicklink.children[0].children[0].style.color = "#007962";
+						quicklinklinks[0].innerText = quicklinkvalue + " (" + numvisible.toString() + ")";
+						quicklink.children[0].children[1].children[0].innerText = "(" + numvisible.toString() + ")"
+						quicklinklinks[0].style.display = "";
+					}
+				}
+			}
+			i--;
+		}
+		
+		parentElement.appendChild(fragment.childNodes[0]);
+		
+		//have to renable this
+		const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+		observer.observe();
+		
+		// Get the input field
+		var input = document.getElementById("search");
+
+		// Execute a function when the user releases a key on the keyboard
+		input.addEventListener("keyup", function(event) {
+		  // Number 13 is the "Enter" key on the keyboard
+		  if (event.keyCode === 13) {
+			// Cancel the default action, if needed
+			event.preventDefault();
+			// Trigger the button element with a click
+			document.getElementById("searchbutton").click();
+		  }
+		});
+	}
+  </script>
+  </head>
+  <body>
+    <button onclick="topFunction()" id="BackTopButton" title="Go to top">Top</button>
+    <div class="wrapper" id="wrapper">
+      <h2><strong>主菜单 - 开发者<span>(开发者 升序 / 名称 升序)</span></strong></h2>
+      <div class="Menu"><a Class="MenuButton" href="index.html">名称 ▲</A><a Class="MenuButton" href="default%20list%20combobox%20quicklinks_lastactivity_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html">最近玩过 ▼</A><a Class="MenuButton" href="default%20combobox%20quicklinks_genre_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html">类别 ▲</A><a Class="MenuButton" href="default%20combobox%20quicklinks_serie_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html">系列 ▲</A><a Class="MenuButton" href="default%20combobox%20quicklinks_developer_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html">开发者 ▲</A><a Class="MenuButton" href="default%20list%20combobox%20quicklinks_releasedate_%E9%99%8D%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html">发布日期 ▼</A><a Class="MenuButton" href="default_source_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html">平台 ▲</A><a Class="MenuButton" href="default%20list%20combobox%20quicklinks_tag_%E5%8D%87%E5%BA%8F_name_%E5%8D%87%E5%BA%8F.html">引擎 ▲</A></div>
+      <h2><strong>搜索</strong></h2><input type="text" id="search" placeholder="输入一个游戏名称进行搜索"><br/><button onclick="search()" id="searchbutton">搜索</button>
+      <h2><strong>快速链接</strong></h2>
+      <P id="label">开发者: <select id="combobselect" onchange="window.location=this.options[this.selectedIndex].value"><option value="#quicklink-无">无 (32)</option><option value="#quicklink-4A Games">4A Games (1)</option><option value="#quicklink-AbsolutSoft">AbsolutSoft (1)</option><option value="#quicklink-Arkane Studios">Arkane Studios (1)</option><option value="#quicklink-Beautiful Glitch">Beautiful Glitch (1)</option><option value="#quicklink-Beenox">Beenox (1)</option><option value="#quicklink-Breadman">Breadman (1)</option><option value="#quicklink-Certain Affinity">Certain Affinity (1)</option><option value="#quicklink-Chasseur De Bots">Chasseur De Bots (1)</option><option value="#quicklink-Chijun Sima">Chijun Sima (1)</option><option value="#quicklink-ClockStone Studios">ClockStone Studios (1)</option><option value="#quicklink-Croteam">Croteam (1)</option><option value="#quicklink-Crowbar Collective">Crowbar Collective (1)</option><option value="#quicklink-D&#39;Avekki Studios">D&#39;Avekki Studios (1)</option><option value="#quicklink-DU&amp;I">DU&amp;I (1)</option><option value="#quicklink-Dustfade">Dustfade (1)</option><option value="#quicklink-Facepunch Studios">Facepunch Studios (2)</option><option value="#quicklink-Fistful of Frags Team">Fistful of Frags Team (1)</option><option value="#quicklink-GameConnect">GameConnect (1)</option><option value="#quicklink-Gearbox Software">Gearbox Software (1)</option><option value="#quicklink-GSC Game World">GSC Game World (1)</option><option value="#quicklink-Hidden Path Entertainment">Hidden Path Entertainment (3)</option><option value="#quicklink-InterWave Studios">InterWave Studios (1)</option><option value="#quicklink-KillHouse Games">KillHouse Games (1)</option><option value="#quicklink-Klei Entertainment">Klei Entertainment (1)</option><option value="#quicklink-Konstructors Entertainment">Konstructors Entertainment (1)</option><option value="#quicklink-Kyle Seeley">Kyle Seeley (1)</option><option value="#quicklink-Lateralis Heavy Industries">Lateralis Heavy Industries (1)</option><option value="#quicklink-LuGus Studios">LuGus Studios (1)</option><option value="#quicklink-mestiez">mestiez (1)</option><option value="#quicklink-Monolith Productions">Monolith Productions (1)</option><option value="#quicklink-Ndemic Creations">Ndemic Creations (2)</option><option value="#quicklink-New World Interactive">New World Interactive (1)</option><option value="#quicklink-Osmotic Studios">Osmotic Studios (1)</option><option value="#quicklink-Outerlight">Outerlight (1)</option><option value="#quicklink-PopCap Games">PopCap Games (1)</option><option value="#quicklink-Prism Game Studios Ltd.">Prism Game Studios Ltd. (1)</option><option value="#quicklink-Rabid Viper Productions">Rabid Viper Productions (1)</option><option value="#quicklink-Raven Software">Raven Software (1)</option><option value="#quicklink-Reactive Drop Team">Reactive Drop Team (1)</option><option value="#quicklink-Ritual Entertainment">Ritual Entertainment (1)</option><option value="#quicklink-Rob Briscoe">Rob Briscoe (1)</option><option value="#quicklink-Royal Rudius Entertainment">Royal Rudius Entertainment (1)</option><option value="#quicklink-Rusty Lake">Rusty Lake (1)</option><option value="#quicklink-Sega">Sega (1)</option><option value="#quicklink-SIGONO INC.">SIGONO INC. (1)</option><option value="#quicklink-Team Jabroni">Team Jabroni (1)</option><option value="#quicklink-The Chinese Room">The Chinese Room (1)</option><option value="#quicklink-The Farm 51">The Farm 51 (1)</option><option value="#quicklink-Turtle Rock Studios">Turtle Rock Studios (2)</option><option value="#quicklink-Unknown">Unknown (2)</option><option value="#quicklink-Valve">Valve (18)</option><option value="#quicklink-Valve Software">Valve Software (1)</option><option value="#quicklink-Videocult">Videocult (1)</option><option value="#quicklink-Vortal Storm">Vortal Storm (1)</option><option value="#quicklink-XuDaWang">XuDaWang (1)</option><option value="#quicklink-Zachtronics">Zachtronics (1)</option></select></P>
+      <div id="quicklink-无"><h2 id="h2jscript" onclick="ShowHide('无')"><strong id="eye-无" style="color: #007962;">&#x25BC;</strong><strong>无<span>( 32 )</span></strong></h2></div>
+<div id="无" class="cards">
+<figure class="card">
+  <a href="d74eaa4c-2416-4537-9f1b-e9e130921d5c.html">
+  <img class="lozad" data-src="d74eaa4c-2416-4537-9f1b-e9e130921d5c/c574b792-57f0-4b25-9775-0e5a5296c424.jpg"/>
+  <figcaption>Action! - Gameplay Recording and Streaming</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="83024015-41fc-4004-b38d-475043e3de02.html">
+  <img class="lozad" data-src="83024015-41fc-4004-b38d-475043e3de02/bb4af059-9da1-4225-8ec5-1d5dae2c7288.jpg"/>
+  <figcaption>Alien Swarm: Reactive Drop - SDK</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="cd967291-4b85-40c4-870e-6a9367505625.html">
+  <img class="lozad" data-src="cd967291-4b85-40c4-870e-6a9367505625/64bfb057-bf9c-42eb-9396-c0aa44294f6f.jpg"/>
+  <figcaption>Banana Shooter</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="95fc8f7b-f12b-40a9-96c6-2b17e1204d7b.html">
+  <img class="lozad" data-src="95fc8f7b-f12b-40a9-96c6-2b17e1204d7b/01a7e6d5-80b0-4e9e-8e55-ae61ac32c62c.jpg"/>
+  <figcaption>Blender</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="6e419ea6-ccae-47dd-90b9-25a3a66b9d54.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Counter-Strike: Global Offensive - SDK</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="82797760-46a2-49b3-bd43-4109837de9f3.html">
+  <img class="lozad" data-src="82797760-46a2-49b3-bd43-4109837de9f3/e38fab34-aa6f-4889-a86e-3d0eb82cb962.jpg"/>
+  <figcaption>Crosshair V2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="f2b73755-e583-44e0-9f5e-1d82ef13da9c.html">
+  <img class="lozad" data-src="f2b73755-e583-44e0-9f5e-1d82ef13da9c/b9af07e7-3ce9-44eb-a58d-ce3c38d0a4ff.jpg"/>
+  <figcaption>Digital Mate</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="0a63b472-9c26-47b2-935f-05f8b47617d2.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Dino D-Day</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="b5f50cbf-571c-4baf-8afb-d2e0e26a5954.html">
+  <img class="lozad" data-src="b5f50cbf-571c-4baf-8afb-d2e0e26a5954/4121a3d9-a8e3-441d-b775-95b74585f63a.jpg"/>
+  <figcaption>Easy Bug Manager</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="67c4c4fb-4794-48e0-83e1-30e6cb6f9718.html">
+  <img class="lozad" data-src="67c4c4fb-4794-48e0-83e1-30e6cb6f9718/ef364825-504b-4360-8fbf-9afa79f804b4.jpg"/>
+  <figcaption>Ficket</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="33a3ac0d-e04d-453e-b52b-e47b58eb23cd.html">
+  <img class="lozad" data-src="33a3ac0d-e04d-453e-b52b-e47b58eb23cd/c7233b95-6e42-42b1-930e-a96f9d0344f4.jpg"/>
+  <figcaption>Half-Life: MMod</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="7edd1430-2a0e-4520-b286-1699e765424e.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Insurgency</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="b0794ef5-8e3f-42cc-88d5-d9c077fdbfed.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Insurgency: Modern Infantry Combat</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="78bab504-c50d-43e6-b7e5-add7a6050262.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Insurgency: Sandstorm Community Test Environment</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="869505c4-8a19-40ba-aa98-79e1c75cf8cd.html">
+  <img class="lozad" data-src="869505c4-8a19-40ba-aa98-79e1c75cf8cd/92bd420f-7666-430d-86cb-2c57511f7ad2.jpg"/>
+  <figcaption>OBS Studio</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c8d8b3b6-a62e-45ff-9061-5d09b6659e67.html">
+  <img class="lozad" data-src="c8d8b3b6-a62e-45ff-9061-5d09b6659e67/559feecf-fa35-4e54-853e-51ce468a30d4.jpg"/>
+  <figcaption>Pixel Palette Creator</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="ab2be3cf-1b4a-48ee-9729-2f2132066776.html">
+  <img class="lozad" data-src="ab2be3cf-1b4a-48ee-9729-2f2132066776/1c6707c5-2a49-4a5b-b30e-d7a49c96f538.jpg"/>
+  <figcaption>PrprLive</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="b64a5240-49dc-4f5a-9b0a-7ec4f89df019.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Ready or Not</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="697fb078-a113-4f92-a770-bd88365502df.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>RED_DEMO_2019</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="6a4deb81-1126-4aeb-8c64-ad33e03885b6.html">
+  <img class="lozad" data-src="6a4deb81-1126-4aeb-8c64-ad33e03885b6/f58a8bfa-51ec-4ab1-bc78-9c2f548e6078.jpg"/>
+  <figcaption>ShareX</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="b6acb45d-d36c-4e9e-af68-ed6ac0ecfaa0.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>SharpShooter3D</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="52da5ee1-0ed8-4d09-b82b-81e06a568ee3.html">
+  <img class="lozad" data-src="52da5ee1-0ed8-4d09-b82b-81e06a568ee3/6c7817b2-2316-4c4d-b368-bafdbc9bdf54.jpg"/>
+  <figcaption>She Sees Red</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="dc36f7b4-65d2-4c12-8676-a5e441c9a029.html">
+  <img class="lozad" data-src="dc36f7b4-65d2-4c12-8676-a5e441c9a029/4ccd0018-7344-422c-95f6-fb7726dc2e2f.jpg"/>
+  <figcaption>Soundpad</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="c3ef9a07-6b5b-4358-9220-46a7ea3ff077.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Source SDK</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="5b315d9f-447a-4ccc-8607-9926406ea68a.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Source SDK Base 2006</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="0424e708-d398-4217-b074-40245e74a765.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Source SDK Base 2007</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="a444173c-6b08-4753-8d36-fb5c4cab43df.html">
+  <img class="lozad" data-src="a444173c-6b08-4753-8d36-fb5c4cab43df/26210c1a-19ca-4dc9-a651-817a69664ee5.jpg"/>
+  <figcaption>Source SDK Base 2013 Multiplayer</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="e4a11592-7bf0-45c6-bf0c-f30723214e18.html">
+  <img class="lozad" data-src="e4a11592-7bf0-45c6-bf0c-f30723214e18/edba3b3a-cb74-4e26-9d9c-e739405f35ca.jpg"/>
+  <figcaption>Source SDK Base 2013 Singleplayer</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="6f84ce5a-df4f-460b-b86b-16c42e29f2b3.html">
+  <img class="lozad" data-src="6f84ce5a-df4f-460b-b86b-16c42e29f2b3/b2572130-2bf2-4eb6-8765-8f2e7a27a912.jpg"/>
+  <figcaption>Swelter</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="9e056fa1-49ae-4742-9478-3559256e4a32.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Treason</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="a6cc6dab-146b-46d1-b9a4-35299943c982.html">
+  <img class="lozad" data-src="a6cc6dab-146b-46d1-b9a4-35299943c982/6273b206-1edd-492c-9206-1c1cae3c339a.jpg"/>
+  <figcaption>VPet</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="94844fd4-7181-4180-baf8-7ebc51e6b13c.html">
+  <img class="lozad" data-src="94844fd4-7181-4180-baf8-7ebc51e6b13c/e280c442-577b-44fa-8c6d-42e05fbb67e5.jpg"/>
+  <figcaption>Wallpaper Engine</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-4A Games"><h2 id="h2jscript" onclick="ShowHide('4A Games')"><strong id="eye-4A Games" style="color: #007962;">&#x25BC;</strong><strong>4A Games<span>( 1 )</span></strong></h2></div>
+<div id="4A Games" class="cards">
+<figure class="card">
+  <a href="45717ce3-704a-4633-bb4a-153efae30f4c.html">
+  <img class="lozad" data-src="45717ce3-704a-4633-bb4a-153efae30f4c/ccabc61c-efa8-4950-bb98-b4b2dbe252ee.jpg"/>
+  <figcaption>Metro: Last Light Redux</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-AbsolutSoft"><h2 id="h2jscript" onclick="ShowHide('AbsolutSoft')"><strong id="eye-AbsolutSoft" style="color: #007962;">&#x25BC;</strong><strong>AbsolutSoft<span>( 1 )</span></strong></h2></div>
+<div id="AbsolutSoft" class="cards">
+<figure class="card">
+  <a href="bf20039a-2a03-4431-a604-81977c423bac.html">
+  <img class="lozad" data-src="bf20039a-2a03-4431-a604-81977c423bac/b0368711-7358-42bf-87d2-3ca2c749575f.jpg"/>
+  <figcaption>Hired Ops</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Arkane Studios"><h2 id="h2jscript" onclick="ShowHide('Arkane Studios')"><strong id="eye-Arkane Studios" style="color: #007962;">&#x25BC;</strong><strong>Arkane Studios<span>( 1 )</span></strong></h2></div>
+<div id="Arkane Studios" class="cards">
+<figure class="card">
+  <a href="31bfd52a-08b3-4515-b303-06dc89202fc6.html">
+  <img class="lozad" data-src="31bfd52a-08b3-4515-b303-06dc89202fc6/85189c55-48db-4852-933e-61793d993ec8.jpg"/>
+  <figcaption>Dishonored 2</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Beautiful Glitch"><h2 id="h2jscript" onclick="ShowHide('Beautiful Glitch')"><strong id="eye-Beautiful Glitch" style="color: #007962;">&#x25BC;</strong><strong>Beautiful Glitch<span>( 1 )</span></strong></h2></div>
+<div id="Beautiful Glitch" class="cards">
+<figure class="card">
+  <a href="721e0731-3465-41b6-ac42-1efcad51e928.html">
+  <img class="lozad" data-src="721e0731-3465-41b6-ac42-1efcad51e928/74d7bffe-903f-4c24-b203-92f04f592d9f.jpg"/>
+  <figcaption>Monster Prom</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Beenox"><h2 id="h2jscript" onclick="ShowHide('Beenox')"><strong id="eye-Beenox" style="color: #007962;">&#x25BC;</strong><strong>Beenox<span>( 1 )</span></strong></h2></div>
+<div id="Beenox" class="cards">
+<figure class="card">
+  <a href="21b698e4-f32d-40ad-8f37-a50fa3075d97.html">
+  <img class="lozad" data-src="21b698e4-f32d-40ad-8f37-a50fa3075d97/7844205d-c07d-4e41-990d-228c9850caad.jpg"/>
+  <figcaption>Call of Duty: Modern Warfare Remastered</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Breadman"><h2 id="h2jscript" onclick="ShowHide('Breadman')"><strong id="eye-Breadman" style="color: #007962;">&#x25BC;</strong><strong>Breadman<span>( 1 )</span></strong></h2></div>
+<div id="Breadman" class="cards">
+<figure class="card">
+  <a href="835343e0-0ca0-4642-aa3f-390f94a0d2fc.html">
+  <img class="lozad" data-src="835343e0-0ca0-4642-aa3f-390f94a0d2fc/587c8e31-56f2-47d1-b6b3-635442677e96.jpg"/>
+  <figcaption>Entropy: Zero 2</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Certain Affinity"><h2 id="h2jscript" onclick="ShowHide('Certain Affinity')"><strong id="eye-Certain Affinity" style="color: #007962;">&#x25BC;</strong><strong>Certain Affinity<span>( 1 )</span></strong></h2></div>
+<div id="Certain Affinity" class="cards">
+<figure class="card">
+  <a href="21b698e4-f32d-40ad-8f37-a50fa3075d97.html">
+  <img class="lozad" data-src="21b698e4-f32d-40ad-8f37-a50fa3075d97/7844205d-c07d-4e41-990d-228c9850caad.jpg"/>
+  <figcaption>Call of Duty: Modern Warfare Remastered</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Chasseur De Bots"><h2 id="h2jscript" onclick="ShowHide('Chasseur De Bots')"><strong id="eye-Chasseur De Bots" style="color: #007962;">&#x25BC;</strong><strong>Chasseur De Bots<span>( 1 )</span></strong></h2></div>
+<div id="Chasseur De Bots" class="cards">
+<figure class="card">
+  <a href="269d21fb-ff58-4659-99db-77c800307dca.html">
+  <img class="lozad" data-src="269d21fb-ff58-4659-99db-77c800307dca/21b9ec0e-4de0-46ea-b0e7-44f61595496b.jpg"/>
+  <figcaption>Warsow</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Chijun Sima"><h2 id="h2jscript" onclick="ShowHide('Chijun Sima')"><strong id="eye-Chijun Sima" style="color: #007962;">&#x25BC;</strong><strong>Chijun Sima<span>( 1 )</span></strong></h2></div>
+<div id="Chijun Sima" class="cards">
+<figure class="card">
+  <a href="e9d80e85-beb4-4ac3-8794-913a63b7ebc6.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Nut-gomoku</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-ClockStone Studios"><h2 id="h2jscript" onclick="ShowHide('ClockStone Studios')"><strong id="eye-ClockStone Studios" style="color: #007962;">&#x25BC;</strong><strong>ClockStone Studios<span>( 1 )</span></strong></h2></div>
+<div id="ClockStone Studios" class="cards">
+<figure class="card">
+  <a href="ebf39d47-3e3a-42f3-95d4-5fd689770cb0.html">
+  <img class="lozad" data-src="ebf39d47-3e3a-42f3-95d4-5fd689770cb0/434e24f5-e97c-453b-bcb7-ed241fa7443f.jpg"/>
+  <figcaption>Bridge Constructor Portal</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Croteam"><h2 id="h2jscript" onclick="ShowHide('Croteam')"><strong id="eye-Croteam" style="color: #007962;">&#x25BC;</strong><strong>Croteam<span>( 1 )</span></strong></h2></div>
+<div id="Croteam" class="cards">
+<figure class="card">
+  <a href="d06b320c-9389-471d-ae3d-88dc03cd67df.html">
+  <img class="lozad" data-src="d06b320c-9389-471d-ae3d-88dc03cd67df/f01d32c8-aa8a-4b56-bc78-bf9bdd1af9e5.jpg"/>
+  <figcaption>Serious Sam 4</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Crowbar Collective"><h2 id="h2jscript" onclick="ShowHide('Crowbar Collective')"><strong id="eye-Crowbar Collective" style="color: #007962;">&#x25BC;</strong><strong>Crowbar Collective<span>( 1 )</span></strong></h2></div>
+<div id="Crowbar Collective" class="cards">
+<figure class="card">
+  <a href="8e5eac5a-cf5d-4c0f-80c3-0ad1a538aa41.html">
+  <img class="lozad" data-src="8e5eac5a-cf5d-4c0f-80c3-0ad1a538aa41/1043bce3-2be6-4d28-8d57-9c46b56f2c5c.jpg"/>
+  <figcaption>Black Mesa</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-D&#39;Avekki Studios"><h2 id="h2jscript" onclick="ShowHide('D&#39;Avekki Studios')"><strong id="eye-D&#39;Avekki Studios" style="color: #007962;">&#x25BC;</strong><strong>D&#39;Avekki Studios<span>( 1 )</span></strong></h2></div>
+<div id="D&#39;Avekki Studios" class="cards">
+<figure class="card">
+  <a href="0ec8a2ff-9296-4d93-8b63-78dfbabf0ed2.html">
+  <img class="lozad" data-src="0ec8a2ff-9296-4d93-8b63-78dfbabf0ed2/73da4219-c78b-4acf-bb43-b17c2b9db7e9.jpg"/>
+  <figcaption>Dark Nights with Poe and Munro</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-DU&amp;I"><h2 id="h2jscript" onclick="ShowHide('DU&amp;I')"><strong id="eye-DU&amp;I" style="color: #007962;">&#x25BC;</strong><strong>DU&amp;I<span>( 1 )</span></strong></h2></div>
+<div id="DU&amp;I" class="cards">
+<figure class="card">
+  <a href="9548536f-8fa7-4f30-8892-2f2705646bfe.html">
+  <img class="lozad" data-src="9548536f-8fa7-4f30-8892-2f2705646bfe/01a88dbf-8fec-47b6-9a4d-1843fdc3babe.jpg"/>
+  <figcaption>Virtual Cottage</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Dustfade"><h2 id="h2jscript" onclick="ShowHide('Dustfade')"><strong id="eye-Dustfade" style="color: #007962;">&#x25BC;</strong><strong>Dustfade<span>( 1 )</span></strong></h2></div>
+<div id="Dustfade" class="cards">
+<figure class="card">
+  <a href="b94068f6-f244-427e-a9d2-d39466048de6.html">
+  <img class="lozad" data-src="b94068f6-f244-427e-a9d2-d39466048de6/abc91713-3544-48b8-a7ba-081f61d456be.jpg"/>
+  <figcaption>Military Conflict: Vietnam</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Facepunch Studios"><h2 id="h2jscript" onclick="ShowHide('Facepunch Studios')"><strong id="eye-Facepunch Studios" style="color: #007962;">&#x25BC;</strong><strong>Facepunch Studios<span>( 2 )</span></strong></h2></div>
+<div id="Facepunch Studios" class="cards">
+<figure class="card">
+  <a href="485595bd-761a-4e8b-adea-630247f79dac.html">
+  <img class="lozad" data-src="485595bd-761a-4e8b-adea-630247f79dac/adc6e902-285f-4bdd-a2c8-f99142b76c96.jpg"/>
+  <figcaption>Garry&#39;s Mod</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="6385d8fa-6a14-4c3e-bbc1-89a75db655f8.html">
+  <img class="lozad" data-src="6385d8fa-6a14-4c3e-bbc1-89a75db655f8/642d090a-a196-43c3-b22b-711f2d2c02ff.jpg"/>
+  <figcaption>s&amp;box</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Fistful of Frags Team"><h2 id="h2jscript" onclick="ShowHide('Fistful of Frags Team')"><strong id="eye-Fistful of Frags Team" style="color: #007962;">&#x25BC;</strong><strong>Fistful of Frags Team<span>( 1 )</span></strong></h2></div>
+<div id="Fistful of Frags Team" class="cards">
+<figure class="card">
+  <a href="9e3e3e0b-3872-45e4-a524-8df06cf40e31.html">
+  <img class="lozad" data-src="9e3e3e0b-3872-45e4-a524-8df06cf40e31/79ab3bd9-2a60-4a34-bcc3-078d307a3b13.jpg"/>
+  <figcaption>Fistful of Frags</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-GameConnect"><h2 id="h2jscript" onclick="ShowHide('GameConnect')"><strong id="eye-GameConnect" style="color: #007962;">&#x25BC;</strong><strong>GameConnect<span>( 1 )</span></strong></h2></div>
+<div id="GameConnect" class="cards">
+<figure class="card">
+  <a href="3350e38c-c1a5-4e60-8739-d63c7dadb707.html">
+  <img class="lozad" data-src="3350e38c-c1a5-4e60-8739-d63c7dadb707/6f20085e-e98f-484a-887c-cbf24124924b.jpg"/>
+  <figcaption>Nuclear Dawn</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Gearbox Software"><h2 id="h2jscript" onclick="ShowHide('Gearbox Software')"><strong id="eye-Gearbox Software" style="color: #007962;">&#x25BC;</strong><strong>Gearbox Software<span>( 1 )</span></strong></h2></div>
+<div id="Gearbox Software" class="cards">
+<figure class="card">
+  <a href="3b3330a8-a263-4948-9e06-93b504b62d4f.html">
+  <img class="lozad" data-src="3b3330a8-a263-4948-9e06-93b504b62d4f/d6f2fd5a-e186-4769-b93f-5793f149d35c.jpg"/>
+  <figcaption>Counter-Strike: Condition Zero</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-GSC Game World"><h2 id="h2jscript" onclick="ShowHide('GSC Game World')"><strong id="eye-GSC Game World" style="color: #007962;">&#x25BC;</strong><strong>GSC Game World<span>( 1 )</span></strong></h2></div>
+<div id="GSC Game World" class="cards">
+<figure class="card">
+  <a href="6ba5ee48-dd71-4b33-bcf0-6449ae3bac98.html">
+  <img class="lozad" data-src="6ba5ee48-dd71-4b33-bcf0-6449ae3bac98/dd4b06fa-b932-4cb8-aff3-1b04991b95b9.jpg"/>
+  <figcaption>S T A L K E R: Call of Pripyat</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Hidden Path Entertainment"><h2 id="h2jscript" onclick="ShowHide('Hidden Path Entertainment')"><strong id="eye-Hidden Path Entertainment" style="color: #007962;">&#x25BC;</strong><strong>Hidden Path Entertainment<span>( 3 )</span></strong></h2></div>
+<div id="Hidden Path Entertainment" class="cards">
+<figure class="card">
+  <a href="80f74542-1aca-4285-8e49-78214f6e67c0.html">
+  <img class="lozad" data-src="80f74542-1aca-4285-8e49-78214f6e67c0/652e83a9-bfa5-49b9-a594-49ff8c520e3b.jpg"/>
+  <figcaption>Counter-Strike: Global Offensive</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="cc75c2f3-fc7e-451c-a00c-ca367d1f1807.html">
+  <img class="lozad" data-src="cc75c2f3-fc7e-451c-a00c-ca367d1f1807/81dce878-b7d2-4691-a211-419d44412fa4.jpg"/>
+  <figcaption>Counter-Strike: Source</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="8db64dfb-774a-47ed-8b01-62ec62d39374.html">
+  <img class="lozad" data-src="cc75c2f3-fc7e-451c-a00c-ca367d1f1807/81dce878-b7d2-4691-a211-419d44412fa4.jpg"/>
+  <figcaption>Counter-Strike: Source Offensive</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-InterWave Studios"><h2 id="h2jscript" onclick="ShowHide('InterWave Studios')"><strong id="eye-InterWave Studios" style="color: #007962;">&#x25BC;</strong><strong>InterWave Studios<span>( 1 )</span></strong></h2></div>
+<div id="InterWave Studios" class="cards">
+<figure class="card">
+  <a href="3350e38c-c1a5-4e60-8739-d63c7dadb707.html">
+  <img class="lozad" data-src="3350e38c-c1a5-4e60-8739-d63c7dadb707/6f20085e-e98f-484a-887c-cbf24124924b.jpg"/>
+  <figcaption>Nuclear Dawn</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-KillHouse Games"><h2 id="h2jscript" onclick="ShowHide('KillHouse Games')"><strong id="eye-KillHouse Games" style="color: #007962;">&#x25BC;</strong><strong>KillHouse Games<span>( 1 )</span></strong></h2></div>
+<div id="KillHouse Games" class="cards">
+<figure class="card">
+  <a href="6b69fb37-58a6-4654-b125-d5bd65be8db2.html">
+  <img class="lozad" data-src="6b69fb37-58a6-4654-b125-d5bd65be8db2/09c4f61d-2c01-4988-8429-2f130864928c.jpg"/>
+  <figcaption>Door Kickers</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Klei Entertainment"><h2 id="h2jscript" onclick="ShowHide('Klei Entertainment')"><strong id="eye-Klei Entertainment" style="color: #007962;">&#x25BC;</strong><strong>Klei Entertainment<span>( 1 )</span></strong></h2></div>
+<div id="Klei Entertainment" class="cards">
+<figure class="card">
+  <a href="949f83f1-e265-47f9-a13f-7f13f297a19e.html">
+  <img class="lozad" data-src="949f83f1-e265-47f9-a13f-7f13f297a19e/7f8c1437-0fb3-4e7f-8a01-3b6c5e535534.jpg"/>
+  <figcaption>Don&#39;t Starve Together</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Konstructors Entertainment"><h2 id="h2jscript" onclick="ShowHide('Konstructors Entertainment')"><strong id="eye-Konstructors Entertainment" style="color: #007962;">&#x25BC;</strong><strong>Konstructors Entertainment<span>( 1 )</span></strong></h2></div>
+<div id="Konstructors Entertainment" class="cards">
+<figure class="card">
+  <a href="17246ee9-0ad0-49e8-841f-cae6563135a2.html">
+  <img class="lozad" data-src="17246ee9-0ad0-49e8-841f-cae6563135a2/c194d417-cccf-43b1-b694-b2b309e94a40.jpg"/>
+  <figcaption>Sorry, James</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Kyle Seeley"><h2 id="h2jscript" onclick="ShowHide('Kyle Seeley')"><strong id="eye-Kyle Seeley" style="color: #007962;">&#x25BC;</strong><strong>Kyle Seeley<span>( 1 )</span></strong></h2></div>
+<div id="Kyle Seeley" class="cards">
+<figure class="card">
+  <a href="c50176ca-7ad4-468a-90ef-bb572527b64d.html">
+  <img class="lozad" data-src="c50176ca-7ad4-468a-90ef-bb572527b64d/ba5c0a6a-16bd-4397-94b0-87d12d5899ad.jpg"/>
+  <figcaption>Emily is Away &lt;3</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Lateralis Heavy Industries"><h2 id="h2jscript" onclick="ShowHide('Lateralis Heavy Industries')"><strong id="eye-Lateralis Heavy Industries" style="color: #007962;">&#x25BC;</strong><strong>Lateralis Heavy Industries<span>( 1 )</span></strong></h2></div>
+<div id="Lateralis Heavy Industries" class="cards">
+<figure class="card">
+  <a href="81032bfd-9310-41d8-86f1-f28d9b54d9ae.html">
+  <img class="lozad" data-src="81032bfd-9310-41d8-86f1-f28d9b54d9ae/4c42cd97-2540-42c5-96bf-faed611647af.jpg"/>
+  <figcaption>OTXO</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-LuGus Studios"><h2 id="h2jscript" onclick="ShowHide('LuGus Studios')"><strong id="eye-LuGus Studios" style="color: #007962;">&#x25BC;</strong><strong>LuGus Studios<span>( 1 )</span></strong></h2></div>
+<div id="LuGus Studios" class="cards">
+<figure class="card">
+  <a href="7ee2ea2b-d745-4645-9fbb-453c5ff0f5b0.html">
+  <img class="lozad" data-src="7ee2ea2b-d745-4645-9fbb-453c5ff0f5b0/dee2c25b-22bf-45b6-884d-6ac3eb7ca183.jpg"/>
+  <figcaption>Midnight Protocol</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-mestiez"><h2 id="h2jscript" onclick="ShowHide('mestiez')"><strong id="eye-mestiez" style="color: #007962;">&#x25BC;</strong><strong>mestiez<span>( 1 )</span></strong></h2></div>
+<div id="mestiez" class="cards">
+<figure class="card">
+  <a href="e364908b-6df9-4348-82bf-4d59349c7955.html">
+  <img class="lozad" data-src="e364908b-6df9-4348-82bf-4d59349c7955/0ba182a7-2712-48f2-a946-6f8f1e954699.jpg"/>
+  <figcaption>People Playground</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Monolith Productions"><h2 id="h2jscript" onclick="ShowHide('Monolith Productions')"><strong id="eye-Monolith Productions" style="color: #007962;">&#x25BC;</strong><strong>Monolith Productions<span>( 1 )</span></strong></h2></div>
+<div id="Monolith Productions" class="cards">
+<figure class="card">
+  <a href="4edc25f6-c29c-4608-9a89-82e54e73c0ab.html">
+  <img class="lozad" data-src="4edc25f6-c29c-4608-9a89-82e54e73c0ab/7ca7aac2-079d-4d96-baf0-02fbc7179c5d.jpg"/>
+  <figcaption>F E A R 2: Project Origin</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Ndemic Creations"><h2 id="h2jscript" onclick="ShowHide('Ndemic Creations')"><strong id="eye-Ndemic Creations" style="color: #007962;">&#x25BC;</strong><strong>Ndemic Creations<span>( 2 )</span></strong></h2></div>
+<div id="Ndemic Creations" class="cards">
+<figure class="card">
+  <a href="3ebcddaa-60d8-4e44-8597-3a80036bc5a2.html">
+  <img class="lozad" data-src="3ebcddaa-60d8-4e44-8597-3a80036bc5a2/bd202d87-ee02-4d4d-a432-03f10d995b9f.jpg"/>
+  <figcaption>Plague Inc: Evolved</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="1162ed2d-5a8d-4526-bfa6-666c7a293015.html">
+  <img class="lozad" data-src="1162ed2d-5a8d-4526-bfa6-666c7a293015/6000b06d-a4fb-4c1b-9ee7-ad0f7e71d184.jpg"/>
+  <figcaption>Rebel Inc: Escalation</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-New World Interactive"><h2 id="h2jscript" onclick="ShowHide('New World Interactive')"><strong id="eye-New World Interactive" style="color: #007962;">&#x25BC;</strong><strong>New World Interactive<span>( 1 )</span></strong></h2></div>
+<div id="New World Interactive" class="cards">
+<figure class="card">
+  <a href="2ea2dd46-0232-449b-a7d7-a3ea0c7ffa2d.html">
+  <img class="lozad" data-src="2ea2dd46-0232-449b-a7d7-a3ea0c7ffa2d/1eb253f1-2db7-46fc-9764-69c8e18b4ead.jpg"/>
+  <figcaption>Insurgency: Sandstorm</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Osmotic Studios"><h2 id="h2jscript" onclick="ShowHide('Osmotic Studios')"><strong id="eye-Osmotic Studios" style="color: #007962;">&#x25BC;</strong><strong>Osmotic Studios<span>( 1 )</span></strong></h2></div>
+<div id="Osmotic Studios" class="cards">
+<figure class="card">
+  <a href="5bf90733-bca7-403e-8b5c-40b14b0f9be5.html">
+  <img class="lozad" data-src="5bf90733-bca7-403e-8b5c-40b14b0f9be5/6fcf927f-70d8-4de4-b096-842849faaa39.jpg"/>
+  <figcaption>Orwell</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Outerlight"><h2 id="h2jscript" onclick="ShowHide('Outerlight')"><strong id="eye-Outerlight" style="color: #007962;">&#x25BC;</strong><strong>Outerlight<span>( 1 )</span></strong></h2></div>
+<div id="Outerlight" class="cards">
+<figure class="card">
+  <a href="601640da-5c8e-4c22-be10-bb2efa466fda.html">
+  <img class="lozad" data-src="601640da-5c8e-4c22-be10-bb2efa466fda/5f4d861e-5b4b-46fa-afeb-dd227cc03402.jpg"/>
+  <figcaption>Bloody Good Time</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-PopCap Games"><h2 id="h2jscript" onclick="ShowHide('PopCap Games')"><strong id="eye-PopCap Games" style="color: #007962;">&#x25BC;</strong><strong>PopCap Games<span>( 1 )</span></strong></h2></div>
+<div id="PopCap Games" class="cards">
+<figure class="card">
+  <a href="e52c0b02-90e7-46d3-a5be-b8cf9af3e1d4.html">
+  <img class="lozad" data-src="e52c0b02-90e7-46d3-a5be-b8cf9af3e1d4/5f0f62aa-bb68-43cf-8b44-3b61c504a19e.jpg"/>
+  <figcaption>Plants vs Zombies: Game of the Year</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Prism Game Studios Ltd."><h2 id="h2jscript" onclick="ShowHide('Prism Game Studios Ltd.')"><strong id="eye-Prism Game Studios Ltd." style="color: #007962;">&#x25BC;</strong><strong>Prism Game Studios Ltd.<span>( 1 )</span></strong></h2></div>
+<div id="Prism Game Studios Ltd." class="cards">
+<figure class="card">
+  <a href="951080d9-961a-4b6b-999a-d569ebf01a50.html">
+  <img class="lozad" data-src="951080d9-961a-4b6b-999a-d569ebf01a50/003f4ac1-7e6f-4c93-884a-dd833fbac68c.jpg"/>
+  <figcaption>Portal Stories: Mel</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Rabid Viper Productions"><h2 id="h2jscript" onclick="ShowHide('Rabid Viper Productions')"><strong id="eye-Rabid Viper Productions" style="color: #007962;">&#x25BC;</strong><strong>Rabid Viper Productions<span>( 1 )</span></strong></h2></div>
+<div id="Rabid Viper Productions" class="cards">
+<figure class="card">
+  <a href="3e3c2810-82a4-435d-b8bd-83476ae34dd9.html">
+  <img class="lozad" data-src="3e3c2810-82a4-435d-b8bd-83476ae34dd9/4f12658a-409a-43de-8328-ba189a5f8fa5.jpg"/>
+  <figcaption>assaultcube</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Raven Software"><h2 id="h2jscript" onclick="ShowHide('Raven Software')"><strong id="eye-Raven Software" style="color: #007962;">&#x25BC;</strong><strong>Raven Software<span>( 1 )</span></strong></h2></div>
+<div id="Raven Software" class="cards">
+<figure class="card">
+  <a href="21b698e4-f32d-40ad-8f37-a50fa3075d97.html">
+  <img class="lozad" data-src="21b698e4-f32d-40ad-8f37-a50fa3075d97/7844205d-c07d-4e41-990d-228c9850caad.jpg"/>
+  <figcaption>Call of Duty: Modern Warfare Remastered</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Reactive Drop Team"><h2 id="h2jscript" onclick="ShowHide('Reactive Drop Team')"><strong id="eye-Reactive Drop Team" style="color: #007962;">&#x25BC;</strong><strong>Reactive Drop Team<span>( 1 )</span></strong></h2></div>
+<div id="Reactive Drop Team" class="cards">
+<figure class="card">
+  <a href="a4f08c9a-3acd-4345-820f-7980f0d1edc0.html">
+  <img class="lozad" data-src="a4f08c9a-3acd-4345-820f-7980f0d1edc0/44553ddb-c388-495d-aaa2-8f01e29200a4.jpg"/>
+  <figcaption>Alien Swarm: Reactive Drop</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Ritual Entertainment"><h2 id="h2jscript" onclick="ShowHide('Ritual Entertainment')"><strong id="eye-Ritual Entertainment" style="color: #007962;">&#x25BC;</strong><strong>Ritual Entertainment<span>( 1 )</span></strong></h2></div>
+<div id="Ritual Entertainment" class="cards">
+<figure class="card">
+  <a href="3b3330a8-a263-4948-9e06-93b504b62d4f.html">
+  <img class="lozad" data-src="3b3330a8-a263-4948-9e06-93b504b62d4f/d6f2fd5a-e186-4769-b93f-5793f149d35c.jpg"/>
+  <figcaption>Counter-Strike: Condition Zero</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Rob Briscoe"><h2 id="h2jscript" onclick="ShowHide('Rob Briscoe')"><strong id="eye-Rob Briscoe" style="color: #007962;">&#x25BC;</strong><strong>Rob Briscoe<span>( 1 )</span></strong></h2></div>
+<div id="Rob Briscoe" class="cards">
+<figure class="card">
+  <a href="3890f13b-b84b-481c-9b05-1748dcf4e7cd.html">
+  <img class="lozad" data-src="3890f13b-b84b-481c-9b05-1748dcf4e7cd/e47b661b-649e-443b-8577-0639b02f404b.jpg"/>
+  <figcaption>Dear Esther: Landmark Edition</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Royal Rudius Entertainment"><h2 id="h2jscript" onclick="ShowHide('Royal Rudius Entertainment')"><strong id="eye-Royal Rudius Entertainment" style="color: #007962;">&#x25BC;</strong><strong>Royal Rudius Entertainment<span>( 1 )</span></strong></h2></div>
+<div id="Royal Rudius Entertainment" class="cards">
+<figure class="card">
+  <a href="e996deab-6576-470c-9d4d-94faa2da5427.html">
+  <img class="lozad" data-src="e996deab-6576-470c-9d4d-94faa2da5427/c72113ee-8cad-4af3-8682-3f9eb9a14c1d.jpg"/>
+  <figcaption>Hunt Down The Freeman</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Rusty Lake"><h2 id="h2jscript" onclick="ShowHide('Rusty Lake')"><strong id="eye-Rusty Lake" style="color: #007962;">&#x25BC;</strong><strong>Rusty Lake<span>( 1 )</span></strong></h2></div>
+<div id="Rusty Lake" class="cards">
+<figure class="card">
+  <a href="288ed99b-d7fd-4c5e-ab8e-28660146e96f.html">
+  <img class="lozad" data-src="288ed99b-d7fd-4c5e-ab8e-28660146e96f/b14435ae-dee8-467d-9900-a43a01554253.jpg"/>
+  <figcaption>Underground Blossom</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Sega"><h2 id="h2jscript" onclick="ShowHide('Sega')"><strong id="eye-Sega" style="color: #007962;">&#x25BC;</strong><strong>Sega<span>( 1 )</span></strong></h2></div>
+<div id="Sega" class="cards">
+<figure class="card">
+  <a href="84798d95-bb05-4962-abcd-f53bb4d7d62c.html">
+  <img class="lozad" data-src="84798d95-bb05-4962-abcd-f53bb4d7d62c/2103bc50-d6f1-4368-927d-f479802adf15.jpg"/>
+  <figcaption>The Murder of Sonic the Hedgehog</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-SIGONO INC."><h2 id="h2jscript" onclick="ShowHide('SIGONO INC.')"><strong id="eye-SIGONO INC." style="color: #007962;">&#x25BC;</strong><strong>SIGONO INC.<span>( 1 )</span></strong></h2></div>
+<div id="SIGONO INC." class="cards">
+<figure class="card">
+  <a href="0bb0fc83-87d3-4f2e-8c19-8a5d8a008342.html">
+  <img class="lozad" data-src="0bb0fc83-87d3-4f2e-8c19-8a5d8a008342/41dddd2b-dd1d-417e-a5af-e7743b17b9e2.jpg"/>
+  <figcaption>OPUS: Rocket of Whispers</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Team Jabroni"><h2 id="h2jscript" onclick="ShowHide('Team Jabroni')"><strong id="eye-Team Jabroni" style="color: #007962;">&#x25BC;</strong><strong>Team Jabroni<span>( 1 )</span></strong></h2></div>
+<div id="Team Jabroni" class="cards">
+<figure class="card">
+  <a href="abb2a2ba-f524-41a0-b05f-a63ec268eb57.html">
+  <img class="lozad" data-src="abb2a2ba-f524-41a0-b05f-a63ec268eb57/59dfd261-990b-49d6-a670-1d146c5a76c6.jpg"/>
+  <figcaption>Jabroni Brawl: Episode 3</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-The Chinese Room"><h2 id="h2jscript" onclick="ShowHide('The Chinese Room')"><strong id="eye-The Chinese Room" style="color: #007962;">&#x25BC;</strong><strong>The Chinese Room<span>( 1 )</span></strong></h2></div>
+<div id="The Chinese Room" class="cards">
+<figure class="card">
+  <a href="3890f13b-b84b-481c-9b05-1748dcf4e7cd.html">
+  <img class="lozad" data-src="3890f13b-b84b-481c-9b05-1748dcf4e7cd/e47b661b-649e-443b-8577-0639b02f404b.jpg"/>
+  <figcaption>Dear Esther: Landmark Edition</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-The Farm 51"><h2 id="h2jscript" onclick="ShowHide('The Farm 51')"><strong id="eye-The Farm 51" style="color: #007962;">&#x25BC;</strong><strong>The Farm 51<span>( 1 )</span></strong></h2></div>
+<div id="The Farm 51" class="cards">
+<figure class="card">
+  <a href="5f0dcca8-e8e7-4fb6-85ca-69b95e0cb34d.html">
+  <img class="lozad" data-src="5f0dcca8-e8e7-4fb6-85ca-69b95e0cb34d/654fd25f-f896-4972-a160-ab35b1ff40f7.jpg"/>
+  <figcaption>Chernobylite Enhanced Edition</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Turtle Rock Studios"><h2 id="h2jscript" onclick="ShowHide('Turtle Rock Studios')"><strong id="eye-Turtle Rock Studios" style="color: #007962;">&#x25BC;</strong><strong>Turtle Rock Studios<span>( 2 )</span></strong></h2></div>
+<div id="Turtle Rock Studios" class="cards">
+<figure class="card">
+  <a href="3b3330a8-a263-4948-9e06-93b504b62d4f.html">
+  <img class="lozad" data-src="3b3330a8-a263-4948-9e06-93b504b62d4f/d6f2fd5a-e186-4769-b93f-5793f149d35c.jpg"/>
+  <figcaption>Counter-Strike: Condition Zero</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="ed765e5c-46d6-420a-9a1f-5c4ca1f0497d.html">
+  <img class="lozad" data-src="ed765e5c-46d6-420a-9a1f-5c4ca1f0497d/2e750e51-6ebc-4a23-be60-f3a13fcee867.jpg"/>
+  <figcaption>Left 4 Dead 2</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Unknown"><h2 id="h2jscript" onclick="ShowHide('Unknown')"><strong id="eye-Unknown" style="color: #007962;">&#x25BC;</strong><strong>Unknown<span>( 2 )</span></strong></h2></div>
+<div id="Unknown" class="cards">
+<figure class="card">
+  <a href="98b463b2-6af2-486a-8f65-7febb384741e.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Mapbase - HL2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="2dc195ee-5256-4ef8-a6b8-b66a7399a636.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Mapbase - HL2 Episodic</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Valve"><h2 id="h2jscript" onclick="ShowHide('Valve')"><strong id="eye-Valve" style="color: #007962;">&#x25BC;</strong><strong>Valve<span>( 18 )</span></strong></h2></div>
+<div id="Valve" class="cards">
+<figure class="card">
+  <a href="9f462a5d-5b35-4bdb-8147-1acb15ea09e9.html">
+  <img class="lozad" data-src="9f462a5d-5b35-4bdb-8147-1acb15ea09e9/f830d10d-80fb-4e04-8559-f0acadb3bc01.jpg"/>
+  <figcaption>Aperture Desk Job</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="172f19d0-13f6-40d5-9d91-1a7b9fd6da26.html">
+  <img class="lozad" data-src="172f19d0-13f6-40d5-9d91-1a7b9fd6da26/3ce18920-7a94-4773-bf6a-bb1c969e3083.jpg"/>
+  <figcaption>Counter-Strike</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="3b3330a8-a263-4948-9e06-93b504b62d4f.html">
+  <img class="lozad" data-src="3b3330a8-a263-4948-9e06-93b504b62d4f/d6f2fd5a-e186-4769-b93f-5793f149d35c.jpg"/>
+  <figcaption>Counter-Strike: Condition Zero</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="9432ac4c-eba7-4649-90f4-ddc221557c5f.html">
+  <img class="lozad" data-src="9432ac4c-eba7-4649-90f4-ddc221557c5f/16806495-5f7d-41c8-9982-562d775670b0.jpg"/>
+  <figcaption>Counter-Strike: Condition Zero Deleted Scenes</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="80f74542-1aca-4285-8e49-78214f6e67c0.html">
+  <img class="lozad" data-src="80f74542-1aca-4285-8e49-78214f6e67c0/652e83a9-bfa5-49b9-a594-49ff8c520e3b.jpg"/>
+  <figcaption>Counter-Strike: Global Offensive</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="cc75c2f3-fc7e-451c-a00c-ca367d1f1807.html">
+  <img class="lozad" data-src="cc75c2f3-fc7e-451c-a00c-ca367d1f1807/81dce878-b7d2-4691-a211-419d44412fa4.jpg"/>
+  <figcaption>Counter-Strike: Source</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="8db64dfb-774a-47ed-8b01-62ec62d39374.html">
+  <img class="lozad" data-src="cc75c2f3-fc7e-451c-a00c-ca367d1f1807/81dce878-b7d2-4691-a211-419d44412fa4.jpg"/>
+  <figcaption>Counter-Strike: Source Offensive</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="5262704c-27ad-4ea4-8c97-727803be1ff4.html">
+  <img class="lozad" data-src="5262704c-27ad-4ea4-8c97-727803be1ff4/d368c847-539e-49b4-8646-7b71ebe421d7.jpg"/>
+  <figcaption>Day of Defeat: Source</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="4a7140d4-6d09-4240-99f4-5d7d7071d4cc.html">
+  <img class="lozad" data-src="4a7140d4-6d09-4240-99f4-5d7d7071d4cc/1bac13c3-7177-4ef7-947f-a68d5398cfd8.jpg"/>
+  <figcaption>Dota 2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="629752f5-6e26-4a5b-b1ac-5a5d85736e94.html">
+  <img class="lozad" data-src="629752f5-6e26-4a5b-b1ac-5a5d85736e94/b68e5419-b028-4164-90ff-95442b118422.jpg"/>
+  <figcaption>Half-Life</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="5fabf440-27b8-4a1d-9f4e-a21b1b28ded8.html">
+  <img class="lozad" data-src="629752f5-6e26-4a5b-b1ac-5a5d85736e94/b68e5419-b028-4164-90ff-95442b118422.jpg"/>
+  <figcaption>Half-Life</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="f1bbe956-7c72-4449-8f61-e442943066e2.html">
+  <img class="lozad" data-src="f1bbe956-7c72-4449-8f61-e442943066e2/cd02a357-0881-4c33-ab6f-1d72eb4566ee.jpg"/>
+  <figcaption>Half-Life 2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="87c750fa-41be-4f9c-94f4-d88a568db5e3.html">
+  <img class="lozad" data-src="87c750fa-41be-4f9c-94f4-d88a568db5e3/b926d70c-e0a7-4338-8dab-703897b931a9.jpg"/>
+  <figcaption>Half-Life 2: Deathmatch</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="37bf3f56-f774-4efa-88b2-ce1c5e880db2.html">
+  <img class="lozad" data-src="37bf3f56-f774-4efa-88b2-ce1c5e880db2/14569e57-e00f-40a4-9b84-304df906cebd.jpg"/>
+  <figcaption>Half-Life 2: Episode One</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="cc626564-8ef4-4f51-b1e3-e79befe1979f.html">
+  <img class="lozad" data-src="cc626564-8ef4-4f51-b1e3-e79befe1979f/39250f30-8bd7-43e2-a7e1-b359ee03ddbe.jpg"/>
+  <figcaption>Half-Life 2: Episode Two</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="ed765e5c-46d6-420a-9a1f-5c4ca1f0497d.html">
+  <img class="lozad" data-src="ed765e5c-46d6-420a-9a1f-5c4ca1f0497d/2e750e51-6ebc-4a23-be60-f3a13fcee867.jpg"/>
+  <figcaption>Left 4 Dead 2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="08723f33-23e6-4f9e-a642-695e84a3b541.html">
+  <img class="lozad" data-src="08723f33-23e6-4f9e-a642-695e84a3b541/1828e028-b9ea-45ed-8aaf-369cee1be5be.jpg"/>
+  <figcaption>Portal 2</figcaption>
+  </a>
+</figure>
+<figure class="card">
+  <a href="cd76f7ee-e805-4f49-8fec-7814512292cc.html">
+  <img class="lozad" data-src="cd76f7ee-e805-4f49-8fec-7814512292cc/b39c7ff5-fdfe-4f2f-8d87-9bf88db0fcdf.jpg"/>
+  <figcaption>Team Fortress 2</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Valve Software"><h2 id="h2jscript" onclick="ShowHide('Valve Software')"><strong id="eye-Valve Software" style="color: #007962;">&#x25BC;</strong><strong>Valve Software<span>( 1 )</span></strong></h2></div>
+<div id="Valve Software" class="cards">
+<figure class="card">
+  <a href="59fa0c82-cca1-4ce2-9239-e9b778c9d602.html">
+  <img class="lozad" data-src="59fa0c82-cca1-4ce2-9239-e9b778c9d602/1aa02ec2-7636-4f76-90fc-a5de5de79ab6.jpg"/>
+  <figcaption>Counter-Strike 2</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Videocult"><h2 id="h2jscript" onclick="ShowHide('Videocult')"><strong id="eye-Videocult" style="color: #007962;">&#x25BC;</strong><strong>Videocult<span>( 1 )</span></strong></h2></div>
+<div id="Videocult" class="cards">
+<figure class="card">
+  <a href="729e0060-20f5-4221-af7d-051bb67a493c.html">
+  <img class="lozad" data-src="729e0060-20f5-4221-af7d-051bb67a493c/b88a98c2-f01e-4060-8e0b-5e32aedf1174.jpg"/>
+  <figcaption>Rain World</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Vortal Storm"><h2 id="h2jscript" onclick="ShowHide('Vortal Storm')"><strong id="eye-Vortal Storm" style="color: #007962;">&#x25BC;</strong><strong>Vortal Storm<span>( 1 )</span></strong></h2></div>
+<div id="Vortal Storm" class="cards">
+<figure class="card">
+  <a href="62a6ff63-53c6-463c-a18a-23e00309e57c.html">
+  <img class="lozad" data-src="62a6ff63-53c6-463c-a18a-23e00309e57c/0db44f07-4b63-443e-a3c3-9d9799853950.jpg"/>
+  <figcaption>Lambda Wars</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-XuDaWang"><h2 id="h2jscript" onclick="ShowHide('XuDaWang')"><strong id="eye-XuDaWang" style="color: #007962;">&#x25BC;</strong><strong>XuDaWang<span>( 1 )</span></strong></h2></div>
+<div id="XuDaWang" class="cards">
+<figure class="card">
+  <a href="1f31ca5a-d85f-4608-987e-a0af79449499.html">
+  <img class="lozad" data-src=""/>
+  <figcaption>Easy Cat Timer</figcaption>
+  </a>
+</figure>
+
+</div><div id="quicklink-Zachtronics"><h2 id="h2jscript" onclick="ShowHide('Zachtronics')"><strong id="eye-Zachtronics" style="color: #007962;">&#x25BC;</strong><strong>Zachtronics<span>( 1 )</span></strong></h2></div>
+<div id="Zachtronics" class="cards">
+<figure class="card">
+  <a href="5b4f1026-a3f4-4549-a53e-0c05f05aac4d.html">
+  <img class="lozad" data-src="5b4f1026-a3f4-4549-a53e-0c05f05aac4d/cbddaecd-4566-49a4-a879-6633aa9ee255.jpg"/>
+  <figcaption>MOLEK-SYNTEZ</figcaption>
+  </a>
+</figure>
+
+</div>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+  <script>
+    const observer = lozad(); // lazy loads elements with default selector as '.lozad'
+    observer.observe();
+    
+	// Get the input field
+	var input = document.getElementById("search");
+
+	// Execute a function when the user releases a key on the keyboard
+	input.addEventListener("keyup", function(event) {
+	  // Number 13 is the "Enter" key on the keyboard
+	  if (event.keyCode === 13) {
+		// Cancel the default action, if needed
+		event.preventDefault();
+		// Trigger the button element with a click
+		document.getElementById("searchbutton").click();
+	  }
+	});
+	
+    //Get the button:
+    mybutton = document.getElementById("BackTopButton");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    }
+	
+	function ShowHide(body_id){
+	var elem
+
+		elem = document.getElementById(body_id);
+		elemclick = document.getElementById("eye-" + body_id);
+		
+		if(!elem) return true;
+		if(!elemclick) return true;
+
+		if (elem.style.display == "none") {
+		  elem.style.display = "";
+		  elemclick.innerHTML = "&#x25BC;";
+		  elemclick.style.color = "#007962";
+		}
+		else {
+		  elem.style.display = "none";
+		  elemclick.innerHTML = "&#x25BA;";
+		  elemclick.style.color = "#790000";
+		}
+		return true;
+	}
+   </script>
+</html>
